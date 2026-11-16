@@ -1,0 +1,28 @@
+{
+  "changed_application_files": [
+    "huawei_agent/store.py",
+    "huawei_agent/matching.py",
+    "huawei_agent/app.py",
+    "huawei_agent/workflow.py",
+    "huawei_agent/task_context.py",
+    "huawei_agent/knowledge.py",
+    "huawei_agent/validation.py",
+    "static/app.js"
+  ],
+  "unchanged_application_files": [
+    "huawei_agent/auth.py",
+    "huawei_agent/exports.py",
+    "huawei_agent/media.py",
+    "huawei_agent/__init__.py",
+    "huawei_agent/providers.py",
+    "huawei_agent/pricing.py",
+    "huawei_agent/settings.py",
+    "huawei_agent/policies.py",
+    "static/index.html",
+    "static/styles.css",
+    "static/login.css",
+    "static/login.html",
+    "static/login.js"
+  ],
+  "note": "Unchanged source is scope evidence, not a claim that every external or GUI behavior was re-executed."
+}

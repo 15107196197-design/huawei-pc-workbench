@@ -1,0 +1,39 @@
+# Template only. Replace the domain, certificate paths and local API port.
+# Install on a host that can reach the backend; do not publish the local UI.
+server {
+    listen 443 ssl;
+    server_name agent-api.your-domain.example;
+
+    ssl_certificate /etc/letsencrypt/live/agent-api.your-domain.example/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/agent-api.your-domain.example/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 2m;
+
+    location = /api/dify/execute {
+        limit_except POST { deny all; }
+        proxy_pass http://127.0.0.1:8787;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Authorization $http_authorization;
+        proxy_set_header X-Tool-Token $http_x_tool_token;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 310s;
+        proxy_send_timeout 30s;
+    }
+
+    location ^~ /api/tools/ {
+        limit_except POST { deny all; }
+        proxy_pass http://127.0.0.1:8787;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Authorization $http_authorization;
+        proxy_set_header X-Tool-Token $http_x_tool_token;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 310s;
+        proxy_send_timeout 30s;
+    }
+
+    location / {
+        return 404;
+    }
+}

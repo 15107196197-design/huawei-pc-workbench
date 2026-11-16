@@ -1,0 +1,98 @@
+{
+  "recorded_at": "2026-10-19T23:48:13+08:00",
+  "application": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+  "scope": "真实魔搭应用接口实测、重启恢复与用户实际网页登录确认；不声称所有云端界面按钮均完成自动化验收",
+  "browser_login": {
+    "status": "verified",
+    "evidence": "用户在真实魔搭应用刷新后明确确认已进入工作台",
+    "confirmed_at": "2026-10-19T23:48:13+08:00"
+  },
+  "authentication": {
+    "authenticated_status": 200,
+    "without_session_denied": true,
+    "cookie_attributes": {
+      "present": true,
+      "secure": true,
+      "httponly": true,
+      "samesite": "none",
+      "partitioned": true,
+      "path": "/"
+    },
+    "managed_config": true
+  },
+  "ima": {
+    "name": "华为PC知识库1",
+    "connected": true,
+    "identity_verified": false
+  },
+  "incomplete_input": {
+    "status": "needs_input",
+    "draft_created": false
+  },
+  "article": {
+    "generator": "deepseek",
+    "title_after_edit": "大学新生选电脑：先看课程、携带与软件需求",
+    "retrieved_facts": 13,
+    "cited_facts": 4,
+    "images": 3,
+    "blocked": 0,
+    "save_and_reopen": true,
+    "copy_http_status": 200,
+    "exports": {
+      "txt": 200,
+      "html": 200,
+      "json": 200,
+      "zip": 200
+    }
+  },
+  "price_search": {
+    "provider": "DeepSeek Search",
+    "leads": 12,
+    "verified_lowest_price": false,
+    "empty_offers_engine": {
+      "quotes": [],
+      "best": []
+    }
+  },
+  "poster": {
+    "generator": "deepseek",
+    "images": 1,
+    "background_provider": "Qwen-Image",
+    "background_model": "qwen-image-2.1-pro",
+    "vision_passed": true,
+    "render_verified": true,
+    "exports": {
+      "png": {
+        "status_code": 200,
+        "bytes": 919000,
+        "sha256": "045ee36f52803eec200fbb8fb1782da6dd5ccc8f6063a809e535a88b4eeeaffc"
+      },
+      "pdf": {
+        "status_code": 200,
+        "bytes": 162565,
+        "sha256": "f9a7beb2dcbcadc449b80e9c54ce39d65f1bcc2a94fd6139102580e96511e06f"
+      }
+    }
+  },
+  "persistence": {
+    "verified_after_real_redeployment": true,
+    "revision_before": 15,
+    "revision_after": 15,
+    "png_unchanged": true,
+    "pdf_unchanged": true
+  },
+  "automated_checks": {
+    "python_main": 192,
+    "deployment_runtime": 13,
+    "frontend_node_branches": 4,
+    "dify_dsl_count": 4,
+    "dify_cloud_verified": false
+  },
+  "limits": [
+    "Dify云端编排尚未联调",
+    "七渠道自动结算价采集未完成",
+    "尚无确认的杭州最低到手价",
+    "本记录不代表平台、品牌或法律官方认证"
+  ],
+  "deployment_manifest_sha256": "fefa8f9af191cad559c78e34aacf5b94e16d960061e1f31a439502b2167dab0a"
+}

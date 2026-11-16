@@ -1,0 +1,24 @@
+# Configure scripts/configure_access.py before exposing this single-operator studio.
+server {
+    listen 80;
+    server_name pc-agent.your-domain.example;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    server_name pc-agent.your-domain.example;
+    ssl_certificate /etc/letsencrypt/live/pc-agent.your-domain.example/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/pc-agent.your-domain.example/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    client_max_body_size 4m;
+    location / {
+        proxy_pass http://127.0.0.1:8787;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header Authorization $http_authorization;
+        proxy_set_header X-Tool-Token $http_x_tool_token;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 310s;
+        proxy_send_timeout 30s;
+    }
+}

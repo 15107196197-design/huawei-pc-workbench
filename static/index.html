@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>华为 PC · 内容工作台</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">跳到工作区</a>
+  <header class="app-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">H<span>·</span></span><div><h1>华为 PC <span>内容工作台</span></h1><p>PC CONTENT STUDIO</p></div><span class="beta-label">工作预览版</span></div>
+    <nav class="header-actions" aria-label="工作台操作">
+      <button class="button quiet" id="history-btn"><span data-icon="history"></span>历史任务</button>
+      <button class="button quiet" id="settings-btn"><span data-icon="settings"></span>连接与设置</button>
+      <button class="button quiet" id="logout-btn" type="button" aria-label="退出登录" title="退出登录" hidden><span data-icon="logout"></span>退出登录</button>
+      <button class="button primary" id="new-task-btn"><span data-icon="plus"></span>新建任务</button>
+    </nav>
+  </header>
+
+  <div class="connection-strip" aria-label="服务连接状态">
+    <div class="connection-items" id="connection-items"><span class="connection-item"><i class="status-dot pending"></i>正在读取连接状态</span></div>
+    <div class="account" id="account-status"><span data-icon="user"></span>身份待核验</div>
+  </div>
+  <div class="error-banner" id="global-error" hidden role="alert"><span data-icon="alert"></span><span id="global-error-message"></span><button class="text-button" id="retry-status-btn">重新连接</button><button class="icon-button" id="dismiss-error-btn" aria-label="关闭提示">×</button></div>
+
+  <main class="workspace" id="workspace">
+    <aside class="panel task-panel" aria-label="任务与对话">
+      <div class="panel-heading"><div><span class="section-eyebrow">01 / BRIEF</span><h2>任务与对话</h2></div><span class="mini-tag" id="task-state">尚未开始</span></div>
+      <section class="brief-card">
+        <div class="card-title-row"><h3>本次创作需求</h3><button class="text-button" id="edit-brief-btn"><span data-icon="edit"></span>编辑</button></div>
+        <dl class="brief-list" id="brief-summary"></dl>
+        <div class="brief-progress" id="brief-progress"></div>
+      </section>
+      <div class="conversation-heading"><h3>和助手一起完善</h3><button class="icon-button" id="scroll-chat-btn" aria-label="滚动到最新对话" title="最新对话"><span data-icon="down"></span></button></div>
+      <div class="chat-messages" id="chat-messages" aria-live="polite" aria-label="任务对话记录"></div>
+      <form class="chat-composer" id="chat-form">
+        <label class="sr-only" for="chat-input">描述需求或补充信息</label>
+        <textarea id="chat-input" rows="3" placeholder="例如：给杭州刚入学的大学生，写一篇小红书选电脑攻略……" maxlength="10000"></textarea>
+        <div class="composer-footer"><span>Enter 发送 · Shift + Enter 换行</span><button class="send-button" id="chat-send-btn" type="submit" aria-label="发送需求"><span data-icon="arrow"></span></button></div>
+      </form>
+      <p class="panel-footnote">产品事实与图片以指定 ima 知识库为依据。</p>
+    </aside>
+
+    <section class="panel creation-panel" aria-label="图文创作">
+      <div class="panel-heading creation-heading"><div><span class="section-eyebrow">02 / CREATE</span><h2>图文创作</h2></div><div class="heading-actions"><span class="mode-label" id="mode-label">等待连接</span><button class="button small primary" id="generate-btn"><span data-icon="spark"></span>生成内容</button></div></div>
+      <div class="platform-tabs" id="platform-tabs" role="tablist" aria-label="发布平台"></div>
+      <div class="task-meta"><span class="task-title" id="task-title">开始一次有依据的创作</span><div><button class="text-button" id="versions-btn" disabled><span data-icon="history"></span><span id="versions-label">版本</span></button><span class="save-label" id="save-status">尚无成品</span></div></div>
+      <div class="process-track" id="process-track" aria-label="创作流程"></div>
+      <div class="poster-tools" id="poster-tools" hidden><span>锁定产品原图 · 背景单独生成</span><button class="button small" id="background-btn">生成 AI 背景</button><button class="button small" id="vision-btn">视觉核验</button></div>
+      <div class="draft-area" id="draft-area"></div>
+      <form class="revision-bar" id="revision-form" hidden>
+        <span data-icon="edit"></span><label class="sr-only" for="revision-input">本次修改要求</label><input id="revision-input" placeholder="补充修改要求，例如：少一些参数，多一些学习场景" maxlength="2000"><button class="button small" type="submit">按要求修改</button>
+      </form>
+      <div class="creation-footer"><div class="footer-actions"><button class="button small" id="edit-draft-btn" disabled><span data-icon="edit"></span>编辑成品</button><button class="button small" id="assets-btn" disabled><span data-icon="image"></span>配图管理</button></div><div class="footer-actions"><button class="button small" id="copy-btn" disabled><span data-icon="copy"></span>复制</button><label class="sr-only" for="export-format">导出格式</label><select id="export-format" aria-label="导出格式"><option value="html">图文 HTML</option><option value="txt">纯文本 TXT</option><option value="zip">完整素材包 ZIP</option><option value="json">核验数据 JSON</option><option value="png">海报 PNG</option><option value="pdf">海报 PDF</option></select><button class="button small primary" id="export-btn" disabled><span data-icon="download"></span>导出</button></div></div>
+    </section>
+
+    <aside class="panel evidence-panel" aria-label="依据与核验">
+      <div class="panel-heading"><div><span class="section-eyebrow">03 / EVIDENCE</span><h2>依据与核验</h2></div><span class="mini-tag muted" id="evidence-count">0 条依据</span></div>
+      <div class="evidence-tabs" role="tablist" aria-label="依据分类"><button class="evidence-tab active" data-evidence-tab="sources" role="tab" aria-selected="true">资料与图片</button><button class="evidence-tab" data-evidence-tab="quotes" role="tab" aria-selected="false">报价方案</button><button class="evidence-tab" data-evidence-tab="checks" role="tab" aria-selected="false">交付核验<span id="check-count"></span></button></div>
+      <div class="evidence-content" id="evidence-content"></div>
+      <div class="evidence-footnote"><span data-icon="shield"></span>核验通过前，成品仍需复核。</div>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="busy-overlay" class="busy-overlay" hidden><div class="busy-pill"><span class="spinner"></span><span id="busy-message">正在处理</span></div></div>
+
+  <dialog id="brief-dialog" class="dialog wide-dialog">
+    <form id="brief-form"><div class="dialog-header"><div><span class="section-eyebrow">TASK BRIEF</span><h2>编辑创作需求</h2></div><button type="button" class="icon-button" data-close="brief-dialog" aria-label="关闭">×</button></div>
+      <p class="dialog-intro">只填已确认的信息。其余内容由助手在对话中补充询问。</p>
+      <div class="form-grid">
+        <label>目标人群<input name="audience" placeholder="例如：大学新生、移动办公者"></label>
+        <label>使用场景<select name="scenario" id="brief-scenario"><option value="">待确认</option></select></label>
+        <label>发布平台<select name="platform" id="brief-platform"></select></label>
+        <label>内容目标<input name="goal" placeholder="例如：帮助选择、引导到店咨询"></label>
+        <label class="span-two">产品型号 / 选购问题<input name="product" placeholder="具体型号与配置；尚未选定可说明需求"></label>
+        <label>预算<input name="budget" placeholder="例如：6000–8000 元"></label>
+        <label>地区<input name="region" placeholder="例如：杭州"></label>
+        <label>购买阶段<select name="purchase_stage"><option value="">待确认</option><option>了解需求</option><option>对比选型</option><option>准备购买</option><option>到店体验</option><option>采购评估</option></select></label>
+        <label>必用软件 / 系统要求<input name="software" placeholder="例如：专业软件名称、兼容性要求"></label>
+        <fieldset class="span-two channels-field"><legend>比较渠道</legend><div id="brief-channels" class="checkbox-grid"></div></fieldset>
+      </div><div class="dialog-footer"><p class="dialog-feedback" data-dialog-feedback role="status" aria-live="polite" hidden></p><button type="button" class="button" data-close="brief-dialog">取消</button><button type="submit" class="button primary">保存需求</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="edit-dialog" class="dialog wide-dialog"><form id="edit-form"><div class="dialog-header"><div><span class="section-eyebrow">CONTENT EDITOR</span><h2>编辑成品文字</h2></div><button type="button" class="icon-button" data-close="edit-dialog" aria-label="关闭">×</button></div><p class="dialog-intro">保存后重新核验。取消会保留原稿，未保存的编辑不进入版本。</p><div class="form-stack"><label>标题<input name="title" required maxlength="300"></label><label>导语<textarea name="lead" rows="3"></textarea></label><label>正文<textarea name="body" rows="12"></textarea></label><label>行动引导<textarea name="cta" rows="2"></textarea></label><label>平台标签<input name="tags" placeholder="用空格或逗号分隔"></label></div><div class="dialog-footer"><p class="dialog-feedback" data-dialog-feedback role="status" aria-live="polite" hidden></p><button type="button" class="button" data-close="edit-dialog">取消</button><button type="submit" class="button primary">保存并核验</button></div></form></dialog>
+
+  <dialog id="assets-dialog" class="dialog wide-dialog"><form id="assets-form"><div class="dialog-header"><div><span class="section-eyebrow">IMAGE SOURCES</span><h2>选择与编排图片</h2></div><button type="button" class="icon-button" data-close="assets-dialog" aria-label="关闭">×</button></div><p class="dialog-intro" id="asset-guidance"></p><div id="asset-picker" class="asset-picker"></div><div class="dialog-footer"><span class="footer-note" id="asset-selection-count"></span><button type="button" class="button" data-close="assets-dialog">取消</button><button type="submit" class="button primary">保存配图</button></div></form></dialog>
+
+  <dialog id="quotes-dialog" class="dialog wide-dialog"><form id="quotes-form"><div class="dialog-header"><div><span class="section-eyebrow">VERIFIABLE PRICING</span><h2>录入商家报价</h2></div><button type="button" class="icon-button" data-close="quotes-dialog" aria-label="关闭">×</button></div>
+    <p class="dialog-intro">按实际商家页面或门店报价填写。优惠由独立规则引擎计算；未确认的配置、来源与资格不能进入已核实最低价。</p>
+    <fieldset id="quote-human-fields" class="quote-human-fields">
+      <section class="quote-buyer-section"><div class="quote-section-heading"><h3>本次购买条件</h3><span>仅填写已确认的资格</span></div><div class="quote-fields three-cols"><label>购买人类型<select id="buyer-kind"><option value="personal">个人购买</option><option value="business">企业采购</option></select></label><label>学生资格<select id="buyer-student"><option value="unknown">未确认</option><option value="true">已确认有资格</option><option value="false">不具备资格</option></select></label><label>个人国补资格<select id="buyer-subsidy"><option value="unknown">未确认</option><option value="true">已确认有资格</option><option value="false">不具备资格</option></select></label></div></section>
+      <div class="quote-offer-heading"><h3>商家报价</h3><button type="button" class="button small" id="add-offer-btn"><span data-icon="plus"></span>添加一条报价</button></div>
+      <div id="quote-offer-list" class="quote-offer-list"></div>
+      <p class="quote-human-note">配置、来源或发票保修未知时请留空。运费与其他费用留空按 0 参与计算，核对全部费用后才能勾选来源确认。引擎会显示条件报价或排除原因，不会把未知条件算成确定优惠。</p>
+    </fieldset>
+    <details class="quote-advanced" id="advanced-quote-import"><summary>高级导入：JSON、比例优惠与以旧换新规则</summary>
+      <p>复杂叠加、换新回收等规则可使用 JSON。切换后仅计算下方 JSON，上方录入内容不会同时提交。</p><label class="quote-check-label json-mode-check"><input type="checkbox" id="use-json-quotes">本次使用 JSON 数据计算</label>
+      <div class="import-file-row"><label class="button small file-button"><span data-icon="upload"></span>读取 JSON 文件<input type="file" id="quote-file" accept=".json,application/json"></label><span id="quote-file-name">报价数组，或包含 offers、buyer 的对象</span></div>
+      <details class="schema-help"><summary>查看字段说明</summary><p>金额使用元。每项至少包含 id、sku_key、channel、seller、base_price、source_url、observed_at；时间须带时区。商品状态 condition、发票保修 service_key、有效期 expires_at、库存与 verified 声明需有依据。discounts 的百分数以小数比例表示，例如规则中 0.1 代表减免 10%，不代表任何实际活动。</p></details>
+      <div class="form-stack"><label>报价数据 offers（JSON 数组）<textarea id="offers-json" class="code-input" rows="10" spellcheck="false" placeholder='[]'></textarea></label><label>购买人条件 buyer（JSON 对象）<textarea id="buyer-json" class="code-input" rows="4" spellcheck="false" placeholder='{}'></textarea></label></div>
+    </details><p class="inline-error" id="quotes-error" role="alert" hidden></p><div class="dialog-footer"><span class="footer-note" id="quote-entry-mode">人工报价录入</span><button type="button" class="button" data-close="quotes-dialog">取消</button><button type="submit" class="button primary">计算并保存方案</button></div></form></dialog>
+
+  <dialog id="settings-dialog" class="dialog wide-dialog"><form id="settings-form"><div class="dialog-header"><div><span class="section-eyebrow">CONNECTIONS</span><h2>连接与模型设置</h2></div><button type="button" class="icon-button" data-close="settings-dialog" aria-label="关闭">×</button></div><p class="dialog-intro" id="settings-intro">密钥只提交到服务端，不在页面回显或保存在浏览器。留空表示保留当前配置。</p><div id="settings-managed-notice" class="check-summary warning" role="note" hidden><strong>托管模式 · 配置只读</strong><p>连接地址、模型和密钥由部署者安全管理。此处可以查看状态并测试连接，需要调整时请联系部署者。</p></div><div id="settings-connections" class="settings-connections"></div><div class="form-grid"><label class="span-two">Dify Service API 地址<input name="dify_base_url" type="url" placeholder="https://api.dify.ai/v1" autocomplete="off"></label><label class="span-two">Dify 应用 API Key<input name="dify_api_key" type="password" placeholder="留空保留已配置密钥" autocomplete="new-password"></label><label>DeepSeek API Key<input name="deepseek_api_key" type="password" placeholder="留空保留" autocomplete="new-password"></label><label>阿里云百炼 API Key<input name="dashscope_api_key" type="password" placeholder="留空保留" autocomplete="new-password"></label><label class="span-two">Tavily 联网检索 API Key<input name="tavily_api_key" type="password" placeholder="可选；DeepSeek 原生搜索可用时优先复用 DeepSeek Key" autocomplete="new-password"></label><label class="span-two">百炼服务地址<input name="dashscope_base_url" type="url" placeholder="https://dashscope.aliyuncs.com" autocomplete="off"></label><label>文本模型<input name="text_model" placeholder="deepseek-flash" autocomplete="off"></label><label>视觉理解模型<input name="vision_model" placeholder="qwen3-vl-plus" autocomplete="off"></label><label>图片生成模型<input name="image_model" placeholder="qwen-image-2.1-pro" autocomplete="off"></label><label>公网业务 API 地址<input name="public_api_base" type="url" placeholder="Dify 云端可访问的 HTTPS 地址" autocomplete="off"></label><label class="span-two">Dify 工具调用 Token<input name="tool_token" type="password" placeholder="留空保留；供云端工作流访问业务工具" autocomplete="new-password"></label></div><p class="small-note">ima 使用后端安全配置。联网价格检索优先使用 DeepSeek 原生搜索，Tavily 作为可选补充。连接测试不等同于具体模型推理验证。</p><div class="dialog-footer"><span id="settings-save-status" class="footer-note"></span><button type="button" class="button" data-close="settings-dialog">关闭</button><button type="submit" id="settings-submit" class="button primary">保存配置</button></div></form></dialog>
+
+  <dialog id="background-dialog" class="dialog"><form id="background-form"><div class="dialog-header"><div><span class="section-eyebrow">AI BACKGROUND</span><h2>生成海报背景</h2></div><button type="button" class="icon-button" data-close="background-dialog" aria-label="关闭">×</button></div><p class="dialog-intro">调用已配置的 Qwen-Image，可能产生模型费用。仅生成背景与装饰，产品主体仍由 ima 原图合成，文字由程序排版。</p><div class="form-stack"><label>背景描述<textarea name="prompt" rows="5" maxlength="1500" placeholder="例如：浅灰蓝色的简洁学习桌面，柔和自然光，给产品与文字留出干净空间" required></textarea></label></div><div class="dialog-footer"><button type="button" class="button" data-close="background-dialog">取消</button><button type="submit" class="button primary">生成背景并合成</button></div></form></dialog>
+
+  <dialog id="history-dialog" class="dialog"><div class="dialog-header"><div><span class="section-eyebrow">TASK LIBRARY</span><h2>历史任务</h2></div><button class="icon-button" data-close="history-dialog" aria-label="关闭">×</button></div><div class="search-field"><span data-icon="search"></span><input id="history-search" placeholder="搜索任务标题或平台" aria-label="搜索历史任务"></div><div id="history-list" class="history-list"></div><div class="dialog-footer"><button class="button" data-close="history-dialog">关闭</button></div></dialog>
+
+  <dialog id="versions-dialog" class="dialog"><div class="dialog-header"><div><span class="section-eyebrow">VERSION HISTORY</span><h2>成品版本</h2></div><button class="icon-button" data-close="versions-dialog" aria-label="关闭">×</button></div><p class="dialog-intro">恢复会将所选版本设为当前内容；后续修改仍会保留版本记录。</p><div id="version-list" class="history-list"></div><div class="dialog-footer"><button class="button" data-close="versions-dialog">关闭</button></div></dialog>
+</body>
+</html>

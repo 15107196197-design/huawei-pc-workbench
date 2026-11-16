@@ -1,0 +1,354 @@
+version: 0.6.0
+kind: app
+dependencies: []
+app:
+  name: 华为PC · ima资料检索
+  description: 可发布为Dify Workflow工具。输入JSON由程序解析；金额与核验不由LLM臆算。
+  icon: 💻
+  icon_type: emoji
+  icon_background: '#EAF1FF'
+  mode: workflow
+  use_icon_as_answer_icon: false
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - id: d3d3609d-32b6-4413-98f6-e6037ae5fef3
+    name: PUBLIC_API_BASE
+    value_type: string
+    value: https://replace-with-your-api.example.invalid
+    description: 自研后端公共HTTPS地址，不带末尾斜线
+  - id: 03e46106-fcae-4c90-9104-b574b7768444
+    name: TOOL_TOKEN
+    value_type: secret
+    value: ''
+    description: 与自研后端TOOL_TOKEN一致；导出时排除真实值
+  rag_pipeline_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    nodes:
+    - id: start
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: start
+        title: 工具输入
+        variables:
+        - variable: query
+          label: 检索问题
+          type: paragraph
+          required: true
+          options: []
+          default: ''
+          max_length: 4000
+          hint: ''
+          placeholder: ''
+        - variable: model
+          label: 精确产品型号
+          type: text-input
+          required: false
+          options: []
+          default: ''
+          max_length: 256
+          hint: ''
+          placeholder: ''
+      position:
+        x: 30
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: payload
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: code
+        title: 编码工具参数
+        code_language: python3
+        code: |
+          import json
+          def main(query: str, model: str) -> dict:
+              return {"payload": json.dumps({"query": query, "model": model or ""}, ensure_ascii=False)}
+        variables:
+        - variable: query
+          value_selector:
+          - start
+          - query
+        - variable: model
+          value_selector:
+          - start
+          - model
+        outputs:
+          payload:
+            type: string
+            children: null
+      position:
+        x: 335
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: execute
+      type: custom
+      data:
+        desc: 外部调用；TOOL_TOKEN仅以Secret环境变量引用，不作为用户输入。
+        selected: false
+        type: http-request
+        title: 调用业务工具
+        method: post
+        url: '{{#env.PUBLIC_API_BASE#}}/api/tools/search'
+        authorization:
+          type: no-auth
+          config: null
+        headers: |-
+          Content-Type: application/json
+          X-Tool-Token: {{#env.TOOL_TOKEN#}}
+        params: ''
+        variables: []
+        body:
+          type: raw-text
+          data:
+          - id: request-json
+            key: ''
+            type: text
+            value: '{{#payload.payload#}}'
+        ssl_verify: true
+        timeout:
+          connect: 10
+          read: 300
+          write: 30
+        retry_config:
+          retry_enabled: false
+          max_retries: 0
+          retry_interval: 1000
+        error_strategy: fail-branch
+      position:
+        x: 640
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: parsed
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: code
+        title: 解析工具结果
+        code_language: python3
+        code: |
+          import json
+
+          def main(body: str, status_code: int) -> dict:
+              if not 200 <= int(status_code) < 300:
+                  return {"result": json.dumps({"ok": False, "http_status": status_code,
+                           "error": "工具接口执行失败；不得补造结果"}, ensure_ascii=False), "ok": False}
+              try:
+                  result = json.loads(body)
+                  encoded = json.dumps(result, ensure_ascii=False)
+              except (ValueError, TypeError):
+                  return {"result": '{"ok":false,"error":"工具返回了无效JSON"}', "ok": False}
+              if len(encoded) > 75000:
+                  return {"result": '{"ok":false,"error":"工具结果过长；请缩小检索或核验范围"}', "ok": False}
+              return {"result": encoded, "ok": True}
+        variables:
+        - variable: body
+          value_selector:
+          - execute
+          - body
+        - variable: status_code
+          value_selector:
+          - execute
+          - status_code
+        outputs:
+          result:
+            type: string
+            children: null
+          ok:
+            type: boolean
+            children: null
+      position:
+        x: 945
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: end
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: end
+        title: 返回工具结果
+        outputs:
+        - variable: result
+          value_selector:
+          - parsed
+          - result
+          value_type: string
+        - variable: ok
+          value_selector:
+          - parsed
+          - ok
+          value_type: boolean
+      position:
+        x: 1250
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: failure
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: code
+        title: 连接失败结果
+        code_language: python3
+        variables: []
+        code: |
+          def main() -> dict:
+              return {"result": '{"ok":false,"error":"工具服务连接失败"}', "ok": False}
+        outputs:
+          result:
+            type: string
+            children: null
+          ok:
+            type: boolean
+            children: null
+      position:
+        x: 1555
+        y: 500
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: failed_end
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: end
+        title: 返回失败状态
+        outputs:
+        - variable: error_result
+          value_selector:
+          - failure
+          - result
+          value_type: string
+        - variable: error_ok
+          value_selector:
+          - failure
+          - ok
+          value_type: boolean
+      position:
+        x: 1860
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    edges:
+    - id: start-source-payload
+      type: custom
+      source: start
+      target: payload
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: start
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+    - id: payload-source-execute
+      type: custom
+      source: payload
+      target: execute
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: code
+        targetType: http-request
+        isInIteration: false
+        isInLoop: false
+    - id: execute-source-parsed
+      type: custom
+      source: execute
+      target: parsed
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+    - id: parsed-source-end
+      type: custom
+      source: parsed
+      target: end
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: code
+        targetType: end
+        isInIteration: false
+        isInLoop: false
+    - id: execute-fail-branch-failure
+      type: custom
+      source: execute
+      target: failure
+      sourceHandle: fail-branch
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+    - id: failure-source-failed_end
+      type: custom
+      source: failure
+      target: failed_end
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: code
+        targetType: end
+        isInIteration: false
+        isInLoop: false
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.65

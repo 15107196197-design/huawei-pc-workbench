@@ -1,0 +1,132 @@
+{
+  "recorded_at": "2026-10-20T10:36:08.211952+08:00",
+  "studio_url": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app-v2?mode=full",
+  "browser_url": "https://a1211joy-huawei-pc-agent-app-v2.ms.show",
+  "api_url": "https://studio-a1211joy-huawei-pc-agent-app-v2.api-inference.modelscope.net",
+  "status": "Running",
+  "sdk_type": "docker",
+  "visibility": "public",
+  "hardware": {
+    "name": "platform/2v-cpu-8g-mem",
+    "resource_type": "free"
+  },
+  "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+  "manifest_sha256": "6b2f211e253fa5085137dc4b2432414017fbff60cfd05a3905251c5e70195eb3",
+  "source_files_matching_manifest": 26,
+  "all_source_files_match": true,
+  "manifest_forbidden_paths": [],
+  "changed_from_previous_release": [
+    "huawei_agent/matching.py",
+    "huawei_agent/validation.py"
+  ],
+  "runtime_created_at": "2026-10-20T02:25:35.000Z",
+  "authentication": {
+    "login_username": "pcadmin",
+    "fresh_login_checked": true,
+    "authenticated_status": {
+      "category": "ok",
+      "phase": "authenticated_status",
+      "status_code": 200
+    },
+    "health_passed": true,
+    "business_routes_deny_without_application_session": true,
+    "cookie_attributes": {
+      "present": true,
+      "secure": true,
+      "httponly": true,
+      "samesite": "none",
+      "partitioned": true,
+      "path": "/"
+    },
+    "password_recorded_or_read_from_access": false
+  },
+  "initial_tasks_count": 0,
+  "current_tasks_count": 1,
+  "same_QA_task_survived_all_V2_releases": true,
+  "independent_storage": {
+    "studio": "A1211JOY/huawei-pc-agent-app-v2",
+    "storage_mount": "same V2 /mnt/workspace reused",
+    "data_dir": "/mnt/workspace/huawei-pc-content-studio",
+    "sqlite": "/mnt/workspace/huawei-pc-content-studio/studio.sqlite3",
+    "first_version_data_not_uploaded": true
+  },
+  "first_version_preservation": {
+    "remote_checks": {
+      "commit_unchanged": true,
+      "status_unchanged": true,
+      "last_modified_unchanged": true,
+      "runtime_created_at_unchanged": false,
+      "hardware_unchanged": true,
+      "host_unchanged": true
+    },
+    "source_commit": "2248ff7c7553cf9bc52677c4c380014207ade741",
+    "application_source_unchanged": true,
+    "runtime_created_at": "2026-10-20T02:05:42.000Z",
+    "runtime_change_attribution": "Another existing chat reset V1 password and called its fixed-V1 deploy_repo around10:05; this V2 group sent no V1 mutations. See v1-concurrent-tool-changes.json.",
+    "local_manifest_files_checked": 771,
+    "local_preserved": false,
+    "local_application_files_unchanged": true,
+    "local_note": "Separate existing chat changed two original local publisher tools;769/771 unchanged and25 application files unchanged. Changes intentionally preserved, not reverted.",
+    "evidence": [
+      "v1-post-v2-preservation.json",
+      "v1-local-preservation.json",
+      "v1-concurrent-tool-changes.json"
+    ]
+  },
+  "online_A": {
+    "task_id": "d038a3a17b2a443396333f9b94d6b0c7",
+    "final_revision": 18,
+    "status": "draft",
+    "facts": 57,
+    "candidates": 10,
+    "evidence_refs": 146,
+    "claim_support": 10,
+    "images_selected_from_existing_originals": 2,
+    "actual_persisted_guards_passed": true,
+    "copy_and_HTML_passed": true,
+    "P5_action_attempts_after_manual_narrowing": 3,
+    "new_writer_or_ima_on_final_revision": 0,
+    "manual_narrowings_required": true,
+    "details": "v2-online-A-final-summary.json"
+  },
+  "network_limits": {
+    "final_retrieve_http": 504,
+    "final_retrieve_seconds": 120.636,
+    "complete_reopen_http": 200,
+    "complete_reopen_seconds": 122.579,
+    "persisted_state_proved_after_gateway_timeout": true,
+    "no_mutation_retry": true
+  },
+  "executed_by_deployment_agent": [
+    "Independent V2 source publish and full26-file public remote hash verification",
+    "Free hardware,Running,health and fresh pcadmin authentication checks",
+    "One online A real ima/model chain plus one later regenerate; earlier-version failures kept",
+    "Final cached matching persistence and P5 through real retrieve route",
+    "Same task preservation across V2 releases,actual full GET,copy and completeHTML"
+  ],
+  "not_executed_by_deployment_agent": [
+    "Successful cloud browser business end-to-end flow",
+    "New real online scenarios beyond A",
+    "Price search,quote mutation or generated images",
+    "V1 restart or source update by this V2 group"
+  ],
+  "historical_archives": [
+    "v2-1722917c-archive-index.json",
+    "v2-056386f1-archive-index.json",
+    "v2-release-summary-old-b21068a7.json",
+    "v2-online-A-runtime-cache-gap.json"
+  ],
+  "evidence_files": [
+    "v2-final-publish-manifest.json",
+    "v2-final-credential-guard-publish.json",
+    "v2-final-guard-status-06.json",
+    "v2-remote-source-check.json",
+    "v2-online-auth-diagnostics.json",
+    "v2-online-A-final-persistence-list.json",
+    "v2-online-A-final-summary.json",
+    "v2-online-A-final-delivery-checks.json",
+    "v2-online-browser-attempt.json",
+    "v1-post-v2-preservation.json"
+  ],
+  "credential_handling": "Token and password remain in local publisher memory and private platform Secret flow; no/access reads,process dumps,credential values or password hashes in output artifacts. Publisher remains running."
+}

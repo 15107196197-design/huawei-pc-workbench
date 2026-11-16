@@ -1,0 +1,155 @@
+{
+  "recorded_at": "2026-10-20T10:19:25.162356+08:00",
+  "target": "A1211JOY/huawei-pc-agent-app-v2",
+  "source_frozen": true,
+  "repair_of_source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+  "manifest": {
+    "files": [
+      {
+        "path": "Dockerfile",
+        "bytes": 1297,
+        "sha256": "a2829981b34c81cf13427320c2c861df684f1e6d55908657856a16170ca65dc5"
+      },
+      {
+        "path": "README.md",
+        "bytes": 455,
+        "sha256": "33642eb0672bd85c7994b5200fc0f3f01dbaafccf98e12663d022b0e3d9aff4d"
+      },
+      {
+        "path": "deploy/modelscope/entrypoint.py",
+        "bytes": 3195,
+        "sha256": "5cd8b171d05f2e0c64059d422bce0cfa39a50a66c1ad7ea8fec35446fac842df"
+      },
+      {
+        "path": "deploy/modelscope/healthcheck.py",
+        "bytes": 439,
+        "sha256": "28e7a9edb42c43adf8391f9596c88b3bb50c09ae0c35c229b5e08c91aff90c6b"
+      },
+      {
+        "path": "huawei_agent/__init__.py",
+        "bytes": 32,
+        "sha256": "7b2824d3b42f168b8f427d20d63bbcb90e554ce9b22dca81dd152fd24a6d740a"
+      },
+      {
+        "path": "huawei_agent/app.py",
+        "bytes": 36596,
+        "sha256": "82988f27b33835611aea67875fb94ec2acbd9341726bf3889206c76b7404235e"
+      },
+      {
+        "path": "huawei_agent/auth.py",
+        "bytes": 4447,
+        "sha256": "0fd13169b3589e032b6a7b53f3e95f03892d6fb7c0c68f688e8c072c622a5ec2"
+      },
+      {
+        "path": "huawei_agent/exports.py",
+        "bytes": 11760,
+        "sha256": "65788044862ffd2c99fc914cbd1179381b9bc7f77b11ce905310fb2fdca705b5"
+      },
+      {
+        "path": "huawei_agent/knowledge.py",
+        "bytes": 56545,
+        "sha256": "1694dcad2e05203691b96fa8d8547909b89de1bf59a5b5bfd83673f809ab6f46"
+      },
+      {
+        "path": "huawei_agent/matching.py",
+        "bytes": 46074,
+        "sha256": "664d6000476c63146b810fd7b055f06c8fba3c2f15f259681390362394cab8e3"
+      },
+      {
+        "path": "huawei_agent/media.py",
+        "bytes": 15959,
+        "sha256": "c524fc92f35c75e56f64ff614f5ea419a2a8ac14d37233b23cb57b0896ee4221"
+      },
+      {
+        "path": "huawei_agent/policies.py",
+        "bytes": 5200,
+        "sha256": "a3548c1b68585804458d85182aae82d3d1d432dbe5314d90cc90c68ec4a33aa7"
+      },
+      {
+        "path": "huawei_agent/pricing.py",
+        "bytes": 24174,
+        "sha256": "a14ed81a12f2b61e7c0fef3c8cc0edaf559b734820ebe29a60b2c3a0631fa91e"
+      },
+      {
+        "path": "huawei_agent/providers.py",
+        "bytes": 8503,
+        "sha256": "fddeadbf689b043a63c972fdcff51fa8fddf1af0396c2e5e37813bb49075dda1"
+      },
+      {
+        "path": "huawei_agent/settings.py",
+        "bytes": 5823,
+        "sha256": "7bbfdd72fbdad36d6099b4049143bf429cc61bf6b0d8c72c46db90fb94710be3"
+      },
+      {
+        "path": "huawei_agent/store.py",
+        "bytes": 4549,
+        "sha256": "a2643d8a8420d3500df9d80337a596367ba1521a7d7aaaf42d805ad7b4b20119"
+      },
+      {
+        "path": "huawei_agent/task_context.py",
+        "bytes": 18915,
+        "sha256": "bcd0cac5e1018ee1b6159bda29d8e7a617e18b6d0f1fa1331e1daeca56f0307b"
+      },
+      {
+        "path": "huawei_agent/validation.py",
+        "bytes": 36845,
+        "sha256": "f9bf863c8021f9a8e3b48f4b9a7baeca57554a5e815d4517884c6cc7755f22e0"
+      },
+      {
+        "path": "huawei_agent/workflow.py",
+        "bytes": 27440,
+        "sha256": "03328519cdedcebb2fbfd4bddab3054f9e034ef9218274d94749ab5f5796539d"
+      },
+      {
+        "path": "requirements.lock",
+        "bytes": 38893,
+        "sha256": "2f6c945fcbd1d8db38e1736589af70ed67329e62061e1ae6d3e9e7d171ad7617"
+      },
+      {
+        "path": "static/app.js",
+        "bytes": 71146,
+        "sha256": "780cfbf4614b6b86a7df0c0efc68aa4bf13a11c77db71224212181ae4eca4cc7"
+      },
+      {
+        "path": "static/index.html",
+        "bytes": 19601,
+        "sha256": "83f591d0f53e5e5b9337cc36fccd4fcbb64092199bf2f8a0e5105bbb3f4d3839"
+      },
+      {
+        "path": "static/login.css",
+        "bytes": 2871,
+        "sha256": "25886d57e82dcc4119276a48dcf0f9e8460de2a1e9741e826792e8d0c863b3c2"
+      },
+      {
+        "path": "static/login.html",
+        "bytes": 1921,
+        "sha256": "8bd6a2da4a5084a69eed169403cc34e86edf1e457ca4ec92d4b5aa42b0514759"
+      },
+      {
+        "path": "static/login.js",
+        "bytes": 3690,
+        "sha256": "4c3174a31ae2c995e42982dc57978f52ea249a6e976631e38de3c587befbd4da"
+      },
+      {
+        "path": "static/styles.css",
+        "bytes": 40878,
+        "sha256": "811492050ac3a6d80a777b5936ec8da41f9128705d2c043698a2087563e1a187"
+      }
+    ],
+    "manifest_sha256": "6b2f211e253fa5085137dc4b2432414017fbff60cfd05a3905251c5e70195eb3"
+  },
+  "forbidden_paths": [],
+  "changed_paths_since_previous_release": [
+    "huawei_agent/matching.py",
+    "huawei_agent/validation.py"
+  ],
+  "hardware_options": [
+    {
+      "name": "platform/2v-cpu-8g-mem",
+      "resource_type": "free"
+    }
+  ],
+  "same_existing_studio": true,
+  "same_in_memory_credentials": true,
+  "login_secret_update": "User-authorized credentials supplied in new publisher memory; only existing private Secret mechanism writes them; no values persisted in artifacts."
+}

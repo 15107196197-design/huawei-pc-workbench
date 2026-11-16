@@ -1,0 +1,2001 @@
+{
+  "recorded_date": "2026-10-20",
+  "timezone": "Asia/Shanghai",
+  "document": "docs/v2-acceptance.md",
+  "acceptance_status": "final25f58ad2_deployed_liveA_r18_persistence_copy_HTML_and338_suite_verified_with_documented_limits_cloud_UI_not_verified",
+  "original_deployed_revision": {
+    "studio": "A1211JOY/huawei-pc-agent-app-v2",
+    "commit": "b21068a7ceb97972905782640cf418d6e9902aee",
+    "platform_status": "Running",
+    "manifest_files": 26,
+    "manifest_sha256": "e20855d90bcd8669f6ca4cafe9885c215130d2e24deabffd56bf3ba1ee799842",
+    "evidence": [
+      "output/verification/v2-release-summary-old-b21068a7.json",
+      "output/verification/v2-remote-source-check-old-b21068a7.json"
+    ]
+  },
+  "corrected_release": {
+    "status": "Running_pcadmin_fresh_login_and_final_r18_persistence_copy_HTML_verified",
+    "commit": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+    "manifest_sha256": "6b2f211e253fa5085137dc4b2432414017fbff60cfd05a3905251c5e70195eb3",
+    "manifest_files": 26,
+    "all_manifest_files_match": true,
+    "running_observed_at": "2026-10-20T10:27:32+08:00",
+    "evidence": [
+      "output/verification/v2-final-publish-manifest.json",
+      "output/verification/v2-remote-source-check.json",
+      "output/verification/v2-final-guard-status-06.json",
+      "output/verification/v2-online-auth-diagnostics.json"
+    ]
+  },
+  "verification_layers": {
+    "synthetic": {
+      "status": "passed_final_338_suite_published_as25f58ad2",
+      "main_tests": 338,
+      "deployment_runtime_tests": 13,
+      "logs": [
+        "output/verification/v2-final-tests.log",
+        "output/verification/deployment-runtime-final.log"
+      ],
+      "limitation": "338对应最终25f58ad2冻结源码；模拟回归不代替真实云端末次取证或浏览器业务UI。",
+      "main_elapsed_seconds": 2.906
+    },
+    "local_live_A": {
+      "status": "partial_with_known_failure",
+      "facts": 57,
+      "evidence_refs": 146,
+      "candidates": 10,
+      "conditional_candidates": 10,
+      "available_assets": 15,
+      "selected_images": 2,
+      "draft_fact_refs": 3,
+      "claim_support": 6,
+      "evidence": [
+        "output/verification/live-ui-A-final.json"
+      ]
+    },
+    "cloud_live_A": {
+      "status": "old_and_corrected_persisted_matching_state_not_accepted",
+      "task_revision": 7,
+      "evidence": [
+        "output/verification/v2-online-A-summary-old-revision.json",
+        "output/verification/v2-online-A-reopen-after-timeout.json"
+      ],
+      "request_active_seconds": 300.529,
+      "request_wall_seconds": 2100.35,
+      "request_http": 504,
+      "read_after_timeout_seconds": 3.086,
+      "note": "初次chat超时，无重发原需求；主机睡眠计入墙钟，不能归为模型延迟；随后GET取回draft并发现候选解释/OS外推缺口。",
+      "final_regeneration": {
+        "status": "new_draft_verified_persisted_candidate_and_plan_failure",
+        "started_at": "2026-10-20T07:25:29+08:00",
+        "request": "POST same existing task /generate",
+        "new_task_created": false,
+        "original_message_resent": false,
+        "attempts": 1,
+        "task_revision": 10,
+        "task_updated_at": "2026-10-20T07:25:45+08:00",
+        "approximate_submit_to_persist_seconds": 16,
+        "approximation_basis": "发起与任务更新时间，不是模型性能测试",
+        "response_elapsed_seconds": 120.632,
+        "response_status": 504,
+        "response_retry_used": false,
+        "list_read_seconds": 1.051,
+        "old_windows_inference_absent": true,
+        "blocking_checks_in_short_report": 0,
+        "remaining_warnings": [
+          "价格",
+          "发布标识"
+        ],
+        "draft_fact_refs": 4,
+        "draft_images": 2,
+        "full_candidate_and_delivery_checks": "completed_delivery_passed_candidate_and_plan_failed",
+        "evidence": [
+          "output/verification/v2-online-A-final-generate-attempt.json",
+          "output/verification/v2-online-A-final-generate.json",
+          "output/verification/v2-online-A-final-list-after-gateway-timeout.json",
+          "output/verification/v2-online-A-final-report-after-gateway-timeout.txt",
+          "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+        ],
+        "persisted_task_revision_after_title_save": 11,
+        "full_task": {
+          "facts": 57,
+          "evidence_refs": 146,
+          "available_assets": 15,
+          "candidates": 10,
+          "conditional_candidates": 10,
+          "fit_assessments": 20,
+          "claim_support": 6,
+          "checks": 7,
+          "blocked": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ]
+        },
+        "candidate_plan_findings": [
+          {
+            "product": "MateBook GT 系列",
+            "fact_ids": [],
+            "unsupported_persisted_text": [
+              "32GB内存、最高2TB",
+              "约1.49kg"
+            ]
+          },
+          {
+            "product": "MateBook D 16",
+            "fact_ids": [],
+            "unsupported_persisted_text": [
+              "16英寸",
+              "约1.7kg"
+            ]
+          },
+          {
+            "location": "selling_point_plan.value_explanation",
+            "unsupported_persisted_text": [
+              "Windows通用软件路线便于对接常见课程软件"
+            ]
+          }
+        ]
+      }
+    },
+    "cloud_ui": {
+      "status": "login_page_visible_business_ui_not_verified",
+      "evidence": [
+        "output/verification/v2-online-browser-attempt.json"
+      ],
+      "observations": [
+        "IAB iframe网络变化与后续超时",
+        "初次Safari尝试遇到锁屏，用户随后解锁",
+        "Safari真实V2登录页可见",
+        "输入框原生自动化失败，未观察到登录成功或业务UI"
+      ],
+      "business_flow_verified": false,
+      "user_unlock_confirmed": true,
+      "note": "Safari真实V2登录页已可见；输入框自动化失败后报告无浏览器窗口，未观察到登录成功。IAB仍超时；不是继续等待用户解锁。"
+    },
+    "offline_replay": {
+      "status": "passed",
+      "ima_calls": 0,
+      "model_calls": 0,
+      "candidate_count": 10,
+      "empty_fact_candidates_sanitized": 6,
+      "original_software_inference_blocked": true,
+      "source_revision": "b21068a7ceb97972905782640cf418d6e9902aee",
+      "evidence": [
+        "output/verification/v2-live-evidence-guard-replay.json",
+        "output/verification/live-ui-A-reason-replay.json"
+      ],
+      "limitation": "重放保存的真实旧样本，不能替代新修订云端实际生成。"
+    },
+    "cloud_final_old_draft_guard": {
+      "status": "passed_detected_unsupported_old_claim",
+      "source_revision": "056386f17cbde187966de2e33e9b7dc6934cc2ac",
+      "http_status": 200,
+      "elapsed_seconds": 1.144,
+      "old_claim_blocked": true,
+      "evidence": [
+        "output/verification/v2-online-A-old-draft-final-guard-report.json",
+        "output/verification/v2-online-A-old-draft-final-guard-report.txt"
+      ],
+      "limitation": "仅对旧稿复核，旧稿仍阻断；不是最终新稿生成完成。"
+    },
+    "cloud_redeployment_persistence": {
+      "status": "passed_for_task_data",
+      "http_status": 200,
+      "elapsed_seconds": 183.917,
+      "task_id": "d038a3a17b2a443396333f9b94d6b0c7",
+      "task_revision": 7,
+      "facts": 57,
+      "old_draft_preserved": true,
+      "evidence": [
+        "output/verification/v2-online-A-persisted-final-release.json"
+      ],
+      "limitation": "未验证媒体哈希或另一次独立重启后的完整业务恢复。"
+    },
+    "cloud_final_delivery_api": {
+      "status": "passed_api_content_checks_only",
+      "source_revision": "056386f17cbde187966de2e33e9b7dc6934cc2ac",
+      "title_edit_attempts": 1,
+      "task_revision": 11,
+      "title_saved": true,
+      "other_draft_fields_unchanged": true,
+      "product_facts_unchanged": true,
+      "content_task_unchanged": true,
+      "reopen": true,
+      "copy_http": 200,
+      "html_http": 200,
+      "html_chars": 7719,
+      "browser_download_or_visual_QA_executed": false,
+      "evidence": [
+        "output/verification/v2-online-A-final-delivery-checks-pre-cachefix-056386f1.json",
+        "output/verification/v2-online-A-title-save-comparison.json",
+        "output/verification/v2-online-A-final-copy-pre-cachefix-056386f1.json",
+        "output/verification/v2-online-A-final-html-response-pre-cachefix-056386f1.json",
+        "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+      ]
+    },
+    "actual_local_generate_cache_replay": {
+      "status": "passed_generate_save_get_isolated_real_r11_copy",
+      "external_call_count": 0,
+      "persisted_local_revision": 4,
+      "original_source_unchanged": true,
+      "evidence": [
+        "output/verification/v2-online-A-actual-generate-cache-replay.json"
+      ],
+      "limitation": "本地实际入口规则生成；不是云端缓存持久化复验。"
+    },
+    "cloud_1722917_r15": {
+      "status": "partial_cache_cleanup_and_delivery_verified_interface_shape_and_package_scope_failure",
+      "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+      "task_revision": 15,
+      "facts": 57,
+      "evidence_refs": 146,
+      "assets": 15,
+      "candidates": 10,
+      "fit_assessments": 20,
+      "claim_support": 8,
+      "draft_fact_refs": 4,
+      "draft_images": 2,
+      "checks": 7,
+      "blocked": 0,
+      "warning_categories": [
+        "价格",
+        "发布标识",
+        "写作依据边界"
+      ],
+      "candidate_GT_D16_unsupported_reasons_removed": true,
+      "P3_software_inference_removed": true,
+      "P3_USB_A_inference_remaining": true,
+      "packaging_fact_in_port_candidates_remaining": true,
+      "manual_lead_and_body_changes_persisted": true,
+      "manual_edit_http": 422,
+      "manual_edit_http_means_success": false,
+      "retrieve_refresh_false_http": 200,
+      "retrieve_elapsed_seconds": 8.583,
+      "reopen_http": 200,
+      "reopen_elapsed_seconds": 1.772,
+      "copy_http": 200,
+      "copy_elapsed_seconds": 1.108,
+      "html_http": 200,
+      "html_elapsed_seconds": 26.003,
+      "html_chars": 7731,
+      "writer_calls": 0,
+      "generate_calls": 0,
+      "new_ima_P2_P3_queries": 0,
+      "P5_calls_budget_and_used": 2,
+      "business_browser_UI_executed": false,
+      "evidence": [
+        "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json",
+        "output/verification/v2-online-A-manual-narrowing-save-pre-final-1722917c.json",
+        "output/verification/v2-online-A-manual-narrowing-comparison-pre-final-1722917c.json",
+        "output/verification/v2-online-A-cache-retrieve-response-pre-final-1722917c.json",
+        "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+        "output/verification/v2-online-A-final-copy-pre-final-1722917c.json",
+        "output/verification/v2-online-A-final-html-response-pre-final-1722917c.json"
+      ]
+    },
+    "r15_final_local_guard_replay": {
+      "status": "passed_offline_actual_r15",
+      "external_calls": 0,
+      "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+      "evidence": [
+        "output/verification/v2-r15-final-guard-replay.json"
+      ],
+      "cloud_latest_fix_verified": false
+    },
+    "final_fresh_login": {
+      "status": "passed_api_fresh_login_username_pcadmin",
+      "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+      "username": "pcadmin",
+      "elapsed_seconds": 7.082,
+      "HTTP": 200,
+      "unauthenticated_business_HTTP": 401,
+      "secure_cookie_attributes_preserved": true,
+      "browser_business_flow_verified": false,
+      "evidence": [
+        "output/verification/v2-online-auth-diagnostics.json"
+      ]
+    },
+    "final25f58ad2_live_A": {
+      "status": "passed_scoped_final_live_A_API_with_manual_narrowing_and_network_UI_limits",
+      "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+      "task_revision": 18,
+      "task_status": "draft",
+      "brief_product_budget_software_empty": true,
+      "facts": 57,
+      "evidence_refs": 146,
+      "assets": 15,
+      "candidates": 10,
+      "conditional_candidates": 10,
+      "fit_assessments": 20,
+      "factless_candidates": 6,
+      "all_fit_unknown": true,
+      "draft_fact_refs": 4,
+      "draft_images": 2,
+      "claim_support_entries": 10,
+      "unique_claim_quotes": 9,
+      "supported_entries": 3,
+      "requires_semantic_review_entries": 7,
+      "interface_entries": 4,
+      "interface_candidate_refs_actual_port_only": true,
+      "interface_support_relation": "relevance_only",
+      "packaging_candidate_removed": true,
+      "P3_allowed_expression_exact_port_original": true,
+      "P3_no_USB_A_or_OS_software_inference": true,
+      "manual_lead_and_protocol_narrowing_preserved": true,
+      "requirement_version": 2,
+      "evidence_version": "73f57f0663ca06a47ba85666",
+      "semantic_review_passed": true,
+      "semantic_issues": [],
+      "blocked_checks": 0,
+      "warning_categories": [
+        "价格",
+        "发布标识",
+        "写作依据边界"
+      ],
+      "persistence_checks_passed": 20,
+      "retrieve_HTTP": 504,
+      "retrieve_elapsed_seconds": 120.636,
+      "mutation_retry": false,
+      "final_GET_HTTP": 200,
+      "final_GET_elapsed_seconds": 122.579,
+      "copy_HTTP": 200,
+      "copy_elapsed_seconds": 1.672,
+      "copy_chars": 349,
+      "html_HTTP": 200,
+      "html_elapsed_seconds": 1.151,
+      "html_chars": 7731,
+      "P5_action_attempts_total": 3,
+      "P5_this_release": 1,
+      "new_ima_P2_P3_calls_this_release": 0,
+      "writer_generate_price_image_calls_this_release": 0,
+      "browser_business_UI_verified": false,
+      "evidence": [
+        "output/verification/v2-online-A-final-cache-retrieve-response.json",
+        "output/verification/v2-online-A-final-reopened-task.json",
+        "output/verification/v2-online-A-final-persistence-checks.json",
+        "output/verification/v2-final-independent-inspection.json",
+        "output/verification/v2-final-acceptance-independent-review.json",
+        "output/verification/v2-online-A-final-copy.json",
+        "output/verification/v2-online-A-final-html-response.json"
+      ]
+    }
+  },
+  "known_failures": [
+    {
+      "id": "candidate_reason_without_evidence",
+      "source": "output/verification/live-ui-A-final.json",
+      "affected_models": [
+        "MateBook D 16",
+        "MateBook GT 系列"
+      ],
+      "observation": "fact_ids为空且fit未知，仍显示规格、价值或排序解释；conditional/unknown不能使这些解释自动成立。",
+      "status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "affected_requirements": [
+        "A",
+        "H",
+        "R7",
+        "R8"
+      ],
+      "final_cloud_source": "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json",
+      "post_056_actual_local_entry_fix_verified": true,
+      "post_056_cloud_fix_verified": true,
+      "final_status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_evidence": "output/verification/v2-online-A-final-persistence-checks.json",
+      "historical_status": "056386_failed_1722917_r15_candidate_reasons_cleaned"
+    },
+    {
+      "id": "os_name_to_software_suitability",
+      "source": "output/verification/v2-online-A-summary-old-revision.json",
+      "quote": "Windows 11 家庭版路线便于对接常见课程软件",
+      "observation": "OS原文只含Windows/Linux，P5 notes认可且旧claim_support未阻断；不能证明课程软件适配。",
+      "status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "affected_requirements": [
+        "A",
+        "H",
+        "R6"
+      ],
+      "final_cloud_source": "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json",
+      "post_056_actual_local_entry_fix_verified": true,
+      "post_056_cloud_fix_verified": true,
+      "final_status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_evidence": "output/verification/v2-online-A-final-persistence-checks.json",
+      "historical_status": "056386_failed_1722917_r15_P3_software_inference_cleaned"
+    },
+    {
+      "id": "screen_ratio_and_resolution_number_shape",
+      "source": "synthetic offline fixture replay",
+      "observation": "修复前A写B的3:2比例或2880×1920分辨率未独立blocked。",
+      "status": "minimal_fix_in_final_320_suite_no_real_cross_model_fault_injection",
+      "affected_requirements": [
+        "L"
+      ],
+      "scope": "仅屏幕比例/像素对；中英文冒号与×/x/✕；不扩普通日期时间数字。",
+      "final_status": "final338_synthetic_cross_model_checks_passed_final_r18_same_product_actual_numbers_mapped_no_live_fault_injection"
+    },
+    {
+      "id": "USB_protocol_to_connector_shape",
+      "source": "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+      "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+      "task_revision": 15,
+      "status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_evidence": "output/verification/v2-online-A-final-persistence-checks.json",
+      "historical_status": "fixed_in_338_unreleased_suite_cloud_pending"
+    },
+    {
+      "id": "packaged_charger_related_to_body_port",
+      "source": "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+      "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+      "task_revision": 15,
+      "status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_status": "fixed_in_final25f58ad2_and_final_r18_original_verified",
+      "final_evidence": "output/verification/v2-online-A-final-persistence-checks.json",
+      "historical_status": "fixed_in_338_unreleased_suite_cloud_pending"
+    }
+  ],
+  "limitations": [
+    {
+      "id": "ima_partial_403",
+      "directories": 5,
+      "status": "partial_read_continues",
+      "evidence": [
+        "output/verification/live-ima-discovery.json"
+      ],
+      "note": "可读证据继续使用，目录HTTP403不等于全库无匹配；不绕过权限，不修改知识库。"
+    },
+    {
+      "id": "not_reexecuted_live",
+      "items": [
+        "价格搜索与优惠结算",
+        "AI背景/原图海报/视觉模型全链",
+        "Dify Cloud导入与HTTPS回调",
+        "媒体哈希与独立重启后的完整业务恢复"
+      ]
+    },
+    {
+      "id": "final_generate_response_gateway_timeout",
+      "status": "observed_not_hidden",
+      "seconds": 120.632,
+      "http_status": 504,
+      "workflow_completed": true,
+      "evidence": [
+        "output/verification/v2-online-A-final-generate.json",
+        "output/verification/v2-online-A-final-list-after-gateway-timeout.json"
+      ],
+      "note": "没有重发需求或重复生成；约16秒由落库时间推算，不是模型性能测量。"
+    },
+    {
+      "id": "original_directory_two_file_difference",
+      "status": "attributed_other_chat_concurrent_tool_fix",
+      "files": [
+        "scripts/publish_app.py",
+        "tests/test_publish_app.py"
+      ],
+      "evidence": [
+        "output/verification/v1-local-preservation.json",
+        "output/verification/v1-concurrent-tool-changes.json"
+      ],
+      "note": "769of771files and25checked applicationfiles unchanged;2tool changes retained, not overwritten/restored."
+    },
+    {
+      "id": "V1_runtime_created_at_changed",
+      "status": "attributed_other_existing_chat_password_reset_redeployment",
+      "evidence": [
+        "output/verification/v1-post-v2-preservation.json",
+        "output/verification/v1-concurrent-tool-changes.json"
+      ],
+      "note": "Do not claim all6remote fields unchanged;5unchanged, runtime.created_at now2026-10-20T02:05:42Z. V2groupissued no V1write requests."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "A",
+      "requirement": "无型号预算软件时先查库并形成有用方向",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_A_partial_natural_brief_queries_and_generates_useful_direction",
+          "tests.test_runtime_plans.RuntimePlanTests.test_complete_supported_draft_is_reviewed_when_missing_list_only_describes_unwritten_angles",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_real_gt_empty_facts_cannot_publish_model_parameters_or_definite_fit",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_candidate_with_effective_evidence_groups_before_unread_model_rank",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_generate_reuses_and_persists_cleaned_cache_then_reopen_stays_clean",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_actual_writer_payload_gets_guarded_plan_without_new_understanding_or_matching_calls",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_platform_change_preserves_cache_and_does_not_ask_budget_or_software",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_cached_stop_or_read_cleans_and_persists_without_writing"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial_with_known_failure",
+        "note": "原句真实取证和稿件生成完成，三字段为空；候选D16/GT无fact_ids仍有规格/适配解释，整体匹配待修复复验。",
+        "evidence": [
+          "output/verification/live-ui-A-final.json",
+          "output/verification/local-ui-save-copy-export.json"
+        ],
+        "offline_fix_evidence": [
+          "output/verification/v2-live-evidence-guard-replay.json",
+          "output/verification/live-ui-A-reason-replay.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "final25f58ad2_r18_scoped_verification_passed_with_limits",
+        "task_revision": 7,
+        "evidence": [
+          "output/verification/v2-online-A-summary-old-revision.json",
+          "output/verification/v2-online-A-reopen-after-timeout.json"
+        ],
+        "request_active_seconds": 300.529,
+        "request_wall_seconds": 2100.35,
+        "request_http": 504,
+        "read_after_timeout_seconds": 3.086,
+        "note": "最终338源码已独立上线，pcadmin新鲜登录通过；r18候选/P3/claim证据清理及GET/copy/HTML核对通过。retrieve响应504但持久化成功、云端业务UI未验、部分ima图片403分别保留；示例两处手改如实记录。",
+        "final_regeneration": {
+          "status": "new_draft_verified_persisted_candidate_and_plan_failure",
+          "started_at": "2026-10-20T07:25:29+08:00",
+          "request": "POST same existing task /generate",
+          "new_task_created": false,
+          "original_message_resent": false,
+          "attempts": 1,
+          "task_revision": 10,
+          "task_updated_at": "2026-10-20T07:25:45+08:00",
+          "approximate_submit_to_persist_seconds": 16,
+          "approximation_basis": "发起与任务更新时间，不是模型性能测试",
+          "response_elapsed_seconds": 120.632,
+          "response_status": 504,
+          "response_retry_used": false,
+          "list_read_seconds": 1.051,
+          "old_windows_inference_absent": true,
+          "blocking_checks_in_short_report": 0,
+          "remaining_warnings": [
+            "价格",
+            "发布标识"
+          ],
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "full_candidate_and_delivery_checks": "completed_delivery_passed_candidate_and_plan_failed",
+          "evidence": [
+            "output/verification/v2-online-A-final-generate-attempt.json",
+            "output/verification/v2-online-A-final-generate.json",
+            "output/verification/v2-online-A-final-list-after-gateway-timeout.json",
+            "output/verification/v2-online-A-final-report-after-gateway-timeout.txt",
+            "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+          ],
+          "persisted_task_revision_after_title_save": 11,
+          "full_task": {
+            "facts": 57,
+            "evidence_refs": 146,
+            "available_assets": 15,
+            "candidates": 10,
+            "conditional_candidates": 10,
+            "fit_assessments": 20,
+            "claim_support": 6,
+            "checks": 7,
+            "blocked": 0,
+            "warning_categories": [
+              "价格",
+              "发布标识",
+              "写作依据边界"
+            ]
+          },
+          "candidate_plan_findings": [
+            {
+              "product": "MateBook GT 系列",
+              "fact_ids": [],
+              "unsupported_persisted_text": [
+                "32GB内存、最高2TB",
+                "约1.49kg"
+              ]
+            },
+            {
+              "product": "MateBook D 16",
+              "fact_ids": [],
+              "unsupported_persisted_text": [
+                "16英寸",
+                "约1.7kg"
+              ]
+            },
+            {
+              "location": "selling_point_plan.value_explanation",
+              "unsupported_persisted_text": [
+                "Windows通用软件路线便于对接常见课程软件"
+              ]
+            }
+          ]
+        },
+        "cloud_1722917_r15": {
+          "status": "partial_cache_cleanup_and_delivery_verified_interface_shape_and_package_scope_failure",
+          "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+          "task_revision": 15,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "fit_assessments": 20,
+          "claim_support": 8,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "checks": 7,
+          "blocked": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "candidate_GT_D16_unsupported_reasons_removed": true,
+          "P3_software_inference_removed": true,
+          "P3_USB_A_inference_remaining": true,
+          "packaging_fact_in_port_candidates_remaining": true,
+          "manual_lead_and_body_changes_persisted": true,
+          "manual_edit_http": 422,
+          "manual_edit_http_means_success": false,
+          "retrieve_refresh_false_http": 200,
+          "retrieve_elapsed_seconds": 8.583,
+          "reopen_http": 200,
+          "reopen_elapsed_seconds": 1.772,
+          "copy_http": 200,
+          "copy_elapsed_seconds": 1.108,
+          "html_http": 200,
+          "html_elapsed_seconds": 26.003,
+          "html_chars": 7731,
+          "writer_calls": 0,
+          "generate_calls": 0,
+          "new_ima_P2_P3_queries": 0,
+          "P5_calls_budget_and_used": 2,
+          "business_browser_UI_executed": false,
+          "evidence": [
+            "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-save-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-comparison-pre-final-1722917c.json",
+            "output/verification/v2-online-A-cache-retrieve-response-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-copy-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-html-response-pre-final-1722917c.json"
+          ]
+        },
+        "final25f58ad2": {
+          "status": "passed_scoped_final_live_A_API_with_manual_narrowing_and_network_UI_limits",
+          "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+          "task_revision": 18,
+          "task_status": "draft",
+          "brief_product_budget_software_empty": true,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "conditional_candidates": 10,
+          "fit_assessments": 20,
+          "factless_candidates": 6,
+          "all_fit_unknown": true,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "claim_support_entries": 10,
+          "unique_claim_quotes": 9,
+          "supported_entries": 3,
+          "requires_semantic_review_entries": 7,
+          "interface_entries": 4,
+          "interface_candidate_refs_actual_port_only": true,
+          "interface_support_relation": "relevance_only",
+          "packaging_candidate_removed": true,
+          "P3_allowed_expression_exact_port_original": true,
+          "P3_no_USB_A_or_OS_software_inference": true,
+          "manual_lead_and_protocol_narrowing_preserved": true,
+          "requirement_version": 2,
+          "evidence_version": "73f57f0663ca06a47ba85666",
+          "semantic_review_passed": true,
+          "semantic_issues": [],
+          "blocked_checks": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "persistence_checks_passed": 20,
+          "retrieve_HTTP": 504,
+          "retrieve_elapsed_seconds": 120.636,
+          "mutation_retry": false,
+          "final_GET_HTTP": 200,
+          "final_GET_elapsed_seconds": 122.579,
+          "copy_HTTP": 200,
+          "copy_elapsed_seconds": 1.672,
+          "copy_chars": 349,
+          "html_HTTP": 200,
+          "html_elapsed_seconds": 1.151,
+          "html_chars": 7731,
+          "P5_action_attempts_total": 3,
+          "P5_this_release": 1,
+          "new_ima_P2_P3_calls_this_release": 0,
+          "writer_generate_price_image_calls_this_release": 0,
+          "browser_business_UI_verified": false,
+          "evidence": [
+            "output/verification/v2-online-A-final-cache-retrieve-response.json",
+            "output/verification/v2-online-A-final-reopened-task.json",
+            "output/verification/v2-online-A-final-persistence-checks.json",
+            "output/verification/v2-final-independent-inspection.json",
+            "output/verification/v2-final-acceptance-independent-review.json",
+            "output/verification/v2-online-A-final-copy.json",
+            "output/verification/v2-online-A-final-html-response.json"
+          ]
+        }
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "B",
+      "requirement": "自然选型诉求不作为型号过滤",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_B_selection_request_is_not_product_filter",
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_natural_selection_request_recalls_task_not_model_alphabetical_order"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "C",
+      "requirement": "多个使用任务保留歧义，不推出硬独显或本地大模型",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_C_mixed_tasks_keep_ambiguity_without_hard_GPU_or_local_AI"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "related_observation_only",
+        "note": "A把编程/建模保存为inferred探索方向；没有真实提交C原句。",
+        "evidence": [
+          "output/verification/live-ui-A-final.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "D",
+      "requirement": "网页版AI明确更新旧推断",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_D_web_AI_replaces_old_inference",
+          "tests.test_matching_adversarial.MatchingAdversarial.test_true_quote_does_not_make_unrelated_model_assumption_stated_and_hard"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "E",
+      "requirement": "不知道预算软件后不重复索要或改词重问",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_E_unknown_budget_software_does_not_loop_question",
+          "tests.test_runtime_plans.RuntimePlanTests.test_P2_unknown_software_does_not_allow_same_question_rephrased_as_program"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "F",
+      "requirement": "指定、比较、排除、引用分开且不悄悄换产品",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_F_comparison_does_not_replace_selected_model",
+          "tests.test_understanding_events.UnderstandingEventTests.test_reference_preserves_previously_selected_product",
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_selected_and_comparison_products_both_read_without_changing_selection"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "G",
+      "requirement": "同系列不同系统年份配置不串事实与图片",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_same_family_different_systems_have_distinct_fact_and_asset_scopes",
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_different_identity_same_folder_is_quarantined_without_cross_model_images",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_same_series_system_year_identity_is_not_collapsed",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_other_product_fact_id_cannot_support_gt_explanation",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_conflicting_fact_scope_or_reference_cannot_make_display_claim_valid"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial_offline_from_live_originals",
+        "note": "使用已保存真实ima原文离线核对系统别名与选项；没有新增外部调用或真实错配注入。",
+        "evidence": [
+          "output/verification/live-system-aliases-offline.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": [],
+        "final_A_observation": "r18稿件4事实及2图片同产品身份、接口引用只真实同产品原文；未在线注入跨型号错误"
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "H",
+      "requirement": "规格不能证明软件兼容或真实任务表现",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_H_hardware_cannot_prove_modeling_or_local_AI",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_cpu_ram_do_not_prove_performance_or_software_compatibility",
+          "tests.test_runtime_plans.RuntimePlanTests.test_complete_draft_missing_list_cannot_excuse_an_actual_unsupported_modeling_promise",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_OS_name_does_not_prove_affirmative_software_route_or_workload_suitability",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_actual_product_software_original_can_support_its_claim_and_required_condition",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_selling_value_explanation_receives_same_scope_and_unknown_fit_guard",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_unbound_direction_and_rejected_angles_cannot_bypass_validated_points",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_generate_reuses_and_persists_cleaned_cache_then_reopen_stays_clean",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_actual_writer_payload_gets_guarded_plan_without_new_understanding_or_matching_calls",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_platform_change_preserves_cache_and_does_not_ask_budget_or_software",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_cached_stop_or_read_cleans_and_persists_without_writing"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial_with_known_failure",
+        "note": "A成稿没有流畅建模承诺，但候选GT无依据排序解释仍出现更适合高负载等结论，整体候选解释未通过。",
+        "evidence": [
+          "output/verification/live-ui-A-final.json"
+        ],
+        "offline_fix_evidence": [
+          "output/verification/v2-live-evidence-guard-replay.json",
+          "output/verification/live-ui-A-reason-replay.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "final25f58ad2_r18_scoped_verification_passed_with_limits",
+        "task_revision": 7,
+        "evidence": [
+          "output/verification/v2-online-A-summary-old-revision.json",
+          "output/verification/v2-online-A-reopen-after-timeout.json"
+        ],
+        "request_active_seconds": 300.529,
+        "request_wall_seconds": 2100.35,
+        "request_http": 504,
+        "read_after_timeout_seconds": 3.086,
+        "note": "最终338源码已独立上线，pcadmin新鲜登录通过；r18候选/P3/claim证据清理及GET/copy/HTML核对通过。retrieve响应504但持久化成功、云端业务UI未验、部分ima图片403分别保留；示例两处手改如实记录。",
+        "final_regeneration": {
+          "status": "new_draft_verified_persisted_candidate_and_plan_failure",
+          "started_at": "2026-10-20T07:25:29+08:00",
+          "request": "POST same existing task /generate",
+          "new_task_created": false,
+          "original_message_resent": false,
+          "attempts": 1,
+          "task_revision": 10,
+          "task_updated_at": "2026-10-20T07:25:45+08:00",
+          "approximate_submit_to_persist_seconds": 16,
+          "approximation_basis": "发起与任务更新时间，不是模型性能测试",
+          "response_elapsed_seconds": 120.632,
+          "response_status": 504,
+          "response_retry_used": false,
+          "list_read_seconds": 1.051,
+          "old_windows_inference_absent": true,
+          "blocking_checks_in_short_report": 0,
+          "remaining_warnings": [
+            "价格",
+            "发布标识"
+          ],
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "full_candidate_and_delivery_checks": "completed_delivery_passed_candidate_and_plan_failed",
+          "evidence": [
+            "output/verification/v2-online-A-final-generate-attempt.json",
+            "output/verification/v2-online-A-final-generate.json",
+            "output/verification/v2-online-A-final-list-after-gateway-timeout.json",
+            "output/verification/v2-online-A-final-report-after-gateway-timeout.txt",
+            "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+          ],
+          "persisted_task_revision_after_title_save": 11,
+          "full_task": {
+            "facts": 57,
+            "evidence_refs": 146,
+            "available_assets": 15,
+            "candidates": 10,
+            "conditional_candidates": 10,
+            "fit_assessments": 20,
+            "claim_support": 6,
+            "checks": 7,
+            "blocked": 0,
+            "warning_categories": [
+              "价格",
+              "发布标识",
+              "写作依据边界"
+            ]
+          },
+          "candidate_plan_findings": [
+            {
+              "product": "MateBook GT 系列",
+              "fact_ids": [],
+              "unsupported_persisted_text": [
+                "32GB内存、最高2TB",
+                "约1.49kg"
+              ]
+            },
+            {
+              "product": "MateBook D 16",
+              "fact_ids": [],
+              "unsupported_persisted_text": [
+                "16英寸",
+                "约1.7kg"
+              ]
+            },
+            {
+              "location": "selling_point_plan.value_explanation",
+              "unsupported_persisted_text": [
+                "Windows通用软件路线便于对接常见课程软件"
+              ]
+            }
+          ]
+        },
+        "final_old_draft_guard": {
+          "status": "passed_detected_unsupported_old_claim",
+          "source_revision": "056386f17cbde187966de2e33e9b7dc6934cc2ac",
+          "http_status": 200,
+          "elapsed_seconds": 1.144,
+          "old_claim_blocked": true,
+          "evidence": [
+            "output/verification/v2-online-A-old-draft-final-guard-report.json",
+            "output/verification/v2-online-A-old-draft-final-guard-report.txt"
+          ],
+          "limitation": "仅对旧稿复核，旧稿仍阻断；不是最终新稿生成完成。"
+        },
+        "cloud_1722917_r15": {
+          "status": "partial_cache_cleanup_and_delivery_verified_interface_shape_and_package_scope_failure",
+          "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+          "task_revision": 15,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "fit_assessments": 20,
+          "claim_support": 8,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "checks": 7,
+          "blocked": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "candidate_GT_D16_unsupported_reasons_removed": true,
+          "P3_software_inference_removed": true,
+          "P3_USB_A_inference_remaining": true,
+          "packaging_fact_in_port_candidates_remaining": true,
+          "manual_lead_and_body_changes_persisted": true,
+          "manual_edit_http": 422,
+          "manual_edit_http_means_success": false,
+          "retrieve_refresh_false_http": 200,
+          "retrieve_elapsed_seconds": 8.583,
+          "reopen_http": 200,
+          "reopen_elapsed_seconds": 1.772,
+          "copy_http": 200,
+          "copy_elapsed_seconds": 1.108,
+          "html_http": 200,
+          "html_elapsed_seconds": 26.003,
+          "html_chars": 7731,
+          "writer_calls": 0,
+          "generate_calls": 0,
+          "new_ima_P2_P3_queries": 0,
+          "P5_calls_budget_and_used": 2,
+          "business_browser_UI_executed": false,
+          "evidence": [
+            "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-save-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-comparison-pre-final-1722917c.json",
+            "output/verification/v2-online-A-cache-retrieve-response-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-copy-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-html-response-pre-final-1722917c.json"
+          ]
+        },
+        "final25f58ad2": {
+          "status": "passed_scoped_final_live_A_API_with_manual_narrowing_and_network_UI_limits",
+          "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+          "task_revision": 18,
+          "task_status": "draft",
+          "brief_product_budget_software_empty": true,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "conditional_candidates": 10,
+          "fit_assessments": 20,
+          "factless_candidates": 6,
+          "all_fit_unknown": true,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "claim_support_entries": 10,
+          "unique_claim_quotes": 9,
+          "supported_entries": 3,
+          "requires_semantic_review_entries": 7,
+          "interface_entries": 4,
+          "interface_candidate_refs_actual_port_only": true,
+          "interface_support_relation": "relevance_only",
+          "packaging_candidate_removed": true,
+          "P3_allowed_expression_exact_port_original": true,
+          "P3_no_USB_A_or_OS_software_inference": true,
+          "manual_lead_and_protocol_narrowing_preserved": true,
+          "requirement_version": 2,
+          "evidence_version": "73f57f0663ca06a47ba85666",
+          "semantic_review_passed": true,
+          "semantic_issues": [],
+          "blocked_checks": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "persistence_checks_passed": 20,
+          "retrieve_HTTP": 504,
+          "retrieve_elapsed_seconds": 120.636,
+          "mutation_retry": false,
+          "final_GET_HTTP": 200,
+          "final_GET_elapsed_seconds": 122.579,
+          "copy_HTTP": 200,
+          "copy_elapsed_seconds": 1.672,
+          "copy_chars": 349,
+          "html_HTTP": 200,
+          "html_elapsed_seconds": 1.151,
+          "html_chars": 7731,
+          "P5_action_attempts_total": 3,
+          "P5_this_release": 1,
+          "new_ima_P2_P3_calls_this_release": 0,
+          "writer_generate_price_image_calls_this_release": 0,
+          "browser_business_UI_verified": false,
+          "evidence": [
+            "output/verification/v2-online-A-final-cache-retrieve-response.json",
+            "output/verification/v2-online-A-final-reopened-task.json",
+            "output/verification/v2-online-A-final-persistence-checks.json",
+            "output/verification/v2-final-independent-inspection.json",
+            "output/verification/v2-final-acceptance-independent-review.json",
+            "output/verification/v2-online-A-final-copy.json",
+            "output/verification/v2-online-A-final-html-response.json"
+          ]
+        }
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "I",
+      "requirement": "无有效同配置价格证据不声称符合预算",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_I_budget_remains_unknown_without_price_evidence",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_unknown_budget_does_not_become_confirmed_match",
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_historical_price_is_not_product_fact_or_current_budget_evidence"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "related_observation_only",
+        "note": "A没有报价并保留价格warning，但预算为空，没有真实执行有预算的I条件。",
+        "evidence": [
+          "output/verification/live-ui-A-final.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": [],
+        "final_A_observation": "最终A无预算且无核实报价，保留价格warning；不视为已真实执行有预算I条件"
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "J",
+      "requirement": "缺失冲突无匹配接口失败分开，可恢复时定向补查",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_original_unreachable_and_service_failure_are_distinct_from_no_match",
+          "tests.test_candidate_discovery.CandidateDiscoveryTests.test_conflicting_originals_quarantine_only_attribute_and_revoke_prior_support",
+          "tests.test_runtime_plans.RuntimePlanTests.test_P3_read_is_a_real_bounded_document_read_and_enters_the_next_plan",
+          "tests.test_runtime_plans.RuntimePlanTests.test_two_invalid_P2_responses_stop_and_workflow_persists_acquired_originals"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial",
+        "note": "真实5个图片目录HTTP403后保留可读原文继续；未真实注入全部冲突/故障分支，候选解释无证据清理另有已知失败。",
+        "evidence": [
+          "output/verification/live-ima-discovery.json",
+          "output/verification/live-ui-A-final.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "K",
+      "requirement": "约最高部分配置等限定在最终内容和压缩中保留",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_important_numeric_qualifiers_survive_compression",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_qualifier_on_another_attribute_does_not_block_unaffected_number",
+          "tests.test_literal_evidence.LiteralEvidenceTests.test_omitted_qualifier_cannot_be_resolved_by_substring",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_required_qualifiers_are_from_point_originals_not_unrelated_model_parameters"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial",
+        "note": "A成稿保留约数、配置/测量差异、典型值和标准版/SE区别；未真实重跑各平台压缩。",
+        "evidence": [
+          "output/verification/live-ui-A-final.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": [],
+        "final_A_observation": "最终A保留系统选项、内存档位及配置/图片边界，未真实跑全部平台压缩"
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "L",
+      "requirement": "A型号数字不支持B型号陈述",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_numeric_fact_from_a_cannot_support_b_even_when_cited",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_default_product_prevents_using_any_model_number",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_screen_ratio_from_another_product_cannot_support_current_product",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_screen_resolution_from_another_product_cannot_support_current_product",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_same_product_screen_number_shapes_support_equivalent_renderings_and_qualifiers",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_screen_number_extension_does_not_check_ordinary_dates_times_or_multiplication"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": [],
+        "final_A_observation": "r18实际14.2英寸与3:2同产品映射存在；未在线注入A/B错数"
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "M",
+      "requirement": "需求更新平台切换保存重新打开保持状态一致",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_M_platform_only_reuses_evidence",
+          "tests.test_understanding_events.UnderstandingEventTests.test_manual_save_then_generate_uses_p1_once_and_old_chat_cannot_override",
+          "tests.test_matching_evidence.MatchingEvidenceTests.test_final_edit_is_rechecked_instead_of_reusing_old_support",
+          "tests.test_api.APITests.test_post_draft_keeps_revision_conflict_protection",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_platform_cache_rechecks_old_display_strings_without_querying_library",
+          "tests.test_candidate_reason_evidence.CandidateReasonEvidenceTests.test_cache_checks_all_backend_candidates_beyond_model_output_cap",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_generate_reuses_and_persists_cleaned_cache_then_reopen_stays_clean",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_actual_writer_payload_gets_guarded_plan_without_new_understanding_or_matching_calls",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_platform_change_preserves_cache_and_does_not_ask_budget_or_software",
+          "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_cached_stop_or_read_cleans_and_persists_without_writing"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial",
+        "note": "A真实编辑保存、取消重开、读取、复制和HTML下载核对完成；未真实执行改需求后四平台转换组合。",
+        "evidence": [
+          "output/verification/live-ui-edit-reopen.json",
+          "output/verification/local-ui-save-copy-export.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "final25f58ad2_r18_scoped_verification_passed_with_limits",
+        "http_status": 200,
+        "elapsed_seconds": 183.917,
+        "task_id": "d038a3a17b2a443396333f9b94d6b0c7",
+        "task_revision": 7,
+        "facts": 57,
+        "old_draft_preserved": true,
+        "evidence": [
+          "output/verification/v2-online-A-persisted-final-release.json"
+        ],
+        "limitation": "需求变更/四平台组合未真实执行；候选/P3旧无据状态仍保存；云端浏览器业务未验。",
+        "delivery_api": {
+          "status": "passed_api_content_checks_only",
+          "source_revision": "056386f17cbde187966de2e33e9b7dc6934cc2ac",
+          "title_edit_attempts": 1,
+          "task_revision": 11,
+          "title_saved": true,
+          "other_draft_fields_unchanged": true,
+          "product_facts_unchanged": true,
+          "content_task_unchanged": true,
+          "reopen": true,
+          "copy_http": 200,
+          "html_http": 200,
+          "html_chars": 7719,
+          "browser_download_or_visual_QA_executed": false,
+          "evidence": [
+            "output/verification/v2-online-A-final-delivery-checks-pre-cachefix-056386f1.json",
+            "output/verification/v2-online-A-title-save-comparison.json",
+            "output/verification/v2-online-A-final-copy-pre-cachefix-056386f1.json",
+            "output/verification/v2-online-A-final-html-response-pre-cachefix-056386f1.json",
+            "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+          ]
+        },
+        "cloud_1722917_r15": {
+          "status": "partial_cache_cleanup_and_delivery_verified_interface_shape_and_package_scope_failure",
+          "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+          "task_revision": 15,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "fit_assessments": 20,
+          "claim_support": 8,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "checks": 7,
+          "blocked": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "candidate_GT_D16_unsupported_reasons_removed": true,
+          "P3_software_inference_removed": true,
+          "P3_USB_A_inference_remaining": true,
+          "packaging_fact_in_port_candidates_remaining": true,
+          "manual_lead_and_body_changes_persisted": true,
+          "manual_edit_http": 422,
+          "manual_edit_http_means_success": false,
+          "retrieve_refresh_false_http": 200,
+          "retrieve_elapsed_seconds": 8.583,
+          "reopen_http": 200,
+          "reopen_elapsed_seconds": 1.772,
+          "copy_http": 200,
+          "copy_elapsed_seconds": 1.108,
+          "html_http": 200,
+          "html_elapsed_seconds": 26.003,
+          "html_chars": 7731,
+          "writer_calls": 0,
+          "generate_calls": 0,
+          "new_ima_P2_P3_queries": 0,
+          "P5_calls_budget_and_used": 2,
+          "business_browser_UI_executed": false,
+          "evidence": [
+            "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-save-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-comparison-pre-final-1722917c.json",
+            "output/verification/v2-online-A-cache-retrieve-response-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-copy-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-html-response-pre-final-1722917c.json"
+          ]
+        },
+        "note": "最终338源码已独立上线，pcadmin新鲜登录通过；r18候选/P3/claim证据清理及GET/copy/HTML核对通过。retrieve响应504但持久化成功、云端业务UI未验、部分ima图片403分别保留；示例两处手改如实记录。",
+        "final25f58ad2": {
+          "status": "passed_scoped_final_live_A_API_with_manual_narrowing_and_network_UI_limits",
+          "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+          "task_revision": 18,
+          "task_status": "draft",
+          "brief_product_budget_software_empty": true,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "conditional_candidates": 10,
+          "fit_assessments": 20,
+          "factless_candidates": 6,
+          "all_fit_unknown": true,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "claim_support_entries": 10,
+          "unique_claim_quotes": 9,
+          "supported_entries": 3,
+          "requires_semantic_review_entries": 7,
+          "interface_entries": 4,
+          "interface_candidate_refs_actual_port_only": true,
+          "interface_support_relation": "relevance_only",
+          "packaging_candidate_removed": true,
+          "P3_allowed_expression_exact_port_original": true,
+          "P3_no_USB_A_or_OS_software_inference": true,
+          "manual_lead_and_protocol_narrowing_preserved": true,
+          "requirement_version": 2,
+          "evidence_version": "73f57f0663ca06a47ba85666",
+          "semantic_review_passed": true,
+          "semantic_issues": [],
+          "blocked_checks": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "persistence_checks_passed": 20,
+          "retrieve_HTTP": 504,
+          "retrieve_elapsed_seconds": 120.636,
+          "mutation_retry": false,
+          "final_GET_HTTP": 200,
+          "final_GET_elapsed_seconds": 122.579,
+          "copy_HTTP": 200,
+          "copy_elapsed_seconds": 1.672,
+          "copy_chars": 349,
+          "html_HTTP": 200,
+          "html_elapsed_seconds": 1.151,
+          "html_chars": 7731,
+          "P5_action_attempts_total": 3,
+          "P5_this_release": 1,
+          "new_ima_P2_P3_calls_this_release": 0,
+          "writer_generate_price_image_calls_this_release": 0,
+          "browser_business_UI_verified": false,
+          "evidence": [
+            "output/verification/v2-online-A-final-cache-retrieve-response.json",
+            "output/verification/v2-online-A-final-reopened-task.json",
+            "output/verification/v2-online-A-final-persistence-checks.json",
+            "output/verification/v2-final-independent-inspection.json",
+            "output/verification/v2-final-acceptance-independent-review.json",
+            "output/verification/v2-online-A-final-copy.json",
+            "output/verification/v2-online-A-final-html-response.json"
+          ]
+        }
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "N",
+      "requirement": "无目标证据允许返回缺口或条件内容，不强推产品",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests.test_requirement_matching.Requirements.test_J_N_missing_evidence_is_useful_gap_not_missing_model",
+          "tests.test_runtime_plans.RuntimePlanTests.test_P3_stop_remains_stopped_when_same_requirements_reuse_evidence",
+          "tests.test_runtime_plans.RuntimePlanTests.test_unknown_soft_modeling_and_programming_do_not_block_verified_screen_comparison"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "not_executed",
+        "note": "没有验证真实全库确实缺少某结论。实际索引部分不可达且查询有上限，不能以未读/未命中作全库否定。",
+        "evidence": [
+          "output/verification/live-ima-discovery.json"
+        ]
+      },
+      "cloud_api": {
+        "status": "not_executed",
+        "evidence": []
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    },
+    {
+      "id": "O",
+      "requirement": "报价图片编辑复制导出平台登录等范围回归，V1保持独立",
+      "synthetic": {
+        "status": "passed_final_338_suite",
+        "test_cases": [
+          "tests/test_pricing.py",
+          "tests/test_media_integrity.py",
+          "tests/test_render_manifest.py",
+          "tests/test_delivery_boundaries.py",
+          "tests/test_hosted_auth.py",
+          "tests/test_dify_delivery.py"
+        ],
+        "evidence": [
+          "output/verification/v2-final-tests.log"
+        ],
+        "limitation": "最终25f58ad2本地338项通过；各真实与UI项目分开。"
+      },
+      "local_real": {
+        "status": "partial",
+        "note": "320主回归+13部署测试以及表单/登录JS和Dify结构校验；真实编辑复制HTML完成。报价搜索结算、AI图片/海报/视觉、Dify Cloud本次未重复真实执行。",
+        "evidence": [
+          "output/verification/v2-final-tests.log",
+          "output/verification/deployment-runtime-final.log",
+          "output/verification/brief-js-final.log",
+          "output/verification/login-js-final.log",
+          "output/verification/dify-final.log",
+          "output/verification/local-ui-save-copy-export.json"
+        ],
+        "original_directory_latest": {
+          "status": "two_tool_changes_attributed_to_another_existing_chat",
+          "checked_files": 771,
+          "preserved": false,
+          "changed_original_files": [
+            "scripts/publish_app.py",
+            "tests/test_publish_app.py"
+          ],
+          "attribution": "exact_write_log_other_chat_publisher_auth_guard_09_59_to10_02",
+          "files_overwritten_or_restored_by_this_followup": false,
+          "evidence": [
+            "output/verification/v1-local-preservation.json",
+            "output/verification/v1-concurrent-tool-changes.json"
+          ],
+          "note": "Earlier unchanged observations apply only to their check time, not current whole-directory preservation.",
+          "unchanged_manifest_files": 769,
+          "checked_application_files": 25,
+          "application_files_unchanged": true,
+          "changed_application_files": []
+        }
+      },
+      "cloud_api": {
+        "status": "final25f58ad2_r18_scoped_verification_passed_with_limits",
+        "evidence": [
+          "output/verification/v2-final-publish-manifest.json",
+          "output/verification/v2-remote-source-check.json",
+          "output/verification/v2-final-status-02.json",
+          "output/verification/v2-online-auth-diagnostics.json",
+          "output/verification/v2-initial-data-isolation-old-b21068a7.json",
+          "output/verification/v1-post-v2-preservation.json",
+          "output/verification/v1-local-preservation.json",
+          "output/verification/v2-online-A-persisted-final-release.json",
+          "output/verification/v2-online-A-old-draft-final-guard-report.json",
+          "output/verification/v2-online-A-final-delivery-checks-pre-cachefix-056386f1.json",
+          "output/verification/v2-online-A-title-save-comparison.json",
+          "output/verification/v2-online-A-final-copy-pre-cachefix-056386f1.json",
+          "output/verification/v2-online-A-final-html-response-pre-cachefix-056386f1.json",
+          "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+        ],
+        "note": "最终338源码已独立上线，pcadmin新鲜登录通过；r18候选/P3/claim证据清理及GET/copy/HTML核对通过。retrieve响应504但持久化成功、云端业务UI未验、部分ima图片403分别保留；示例两处手改如实记录。",
+        "cloud_1722917_r15": {
+          "status": "partial_cache_cleanup_and_delivery_verified_interface_shape_and_package_scope_failure",
+          "source_revision": "1722917ce6dc639ab7079682b9f37d777296c718",
+          "task_revision": 15,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "fit_assessments": 20,
+          "claim_support": 8,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "checks": 7,
+          "blocked": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "candidate_GT_D16_unsupported_reasons_removed": true,
+          "P3_software_inference_removed": true,
+          "P3_USB_A_inference_remaining": true,
+          "packaging_fact_in_port_candidates_remaining": true,
+          "manual_lead_and_body_changes_persisted": true,
+          "manual_edit_http": 422,
+          "manual_edit_http_means_success": false,
+          "retrieve_refresh_false_http": 200,
+          "retrieve_elapsed_seconds": 8.583,
+          "reopen_http": 200,
+          "reopen_elapsed_seconds": 1.772,
+          "copy_http": 200,
+          "copy_elapsed_seconds": 1.108,
+          "html_http": 200,
+          "html_elapsed_seconds": 26.003,
+          "html_chars": 7731,
+          "writer_calls": 0,
+          "generate_calls": 0,
+          "new_ima_P2_P3_queries": 0,
+          "P5_calls_budget_and_used": 2,
+          "business_browser_UI_executed": false,
+          "evidence": [
+            "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-save-pre-final-1722917c.json",
+            "output/verification/v2-online-A-manual-narrowing-comparison-pre-final-1722917c.json",
+            "output/verification/v2-online-A-cache-retrieve-response-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-copy-pre-final-1722917c.json",
+            "output/verification/v2-online-A-final-html-response-pre-final-1722917c.json"
+          ]
+        },
+        "preservation_note": "V1 application commit and4other fields unchanged; runtime.created_at changed with attribution pending. Local2publisher-tool changes attributed by exact write logs to another existing chat;25applicationfiles unchanged.",
+        "latest_V1_remote": {
+          "status": "five_fields_unchanged_runtime_created_at_changed",
+          "recorded_at": "2026-10-20T10:28:46.331689+08:00",
+          "unchanged_fields": [
+            "commit",
+            "status",
+            "last_modified",
+            "hardware",
+            "host"
+          ],
+          "commit": "2248ff7c7553cf9bc52677c4c380014207ade741",
+          "runtime_created_at": "2026-10-20T02:05:42Z",
+          "runtime_change_attribution": "direct_other_existing_chat_V1_password_reset_deployment_workflow",
+          "V2_group_V1_write_requests": 0,
+          "evidence": [
+            "output/verification/v1-post-v2-preservation.json",
+            "output/verification/v1-concurrent-tool-changes.json"
+          ],
+          "runtime_attribution_limit": "No exact cloud deployment request ID; direct workflow state and fixed V1 target establish before/after linkage."
+        },
+        "final25f58ad2": {
+          "status": "passed_scoped_final_live_A_API_with_manual_narrowing_and_network_UI_limits",
+          "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+          "task_revision": 18,
+          "task_status": "draft",
+          "brief_product_budget_software_empty": true,
+          "facts": 57,
+          "evidence_refs": 146,
+          "assets": 15,
+          "candidates": 10,
+          "conditional_candidates": 10,
+          "fit_assessments": 20,
+          "factless_candidates": 6,
+          "all_fit_unknown": true,
+          "draft_fact_refs": 4,
+          "draft_images": 2,
+          "claim_support_entries": 10,
+          "unique_claim_quotes": 9,
+          "supported_entries": 3,
+          "requires_semantic_review_entries": 7,
+          "interface_entries": 4,
+          "interface_candidate_refs_actual_port_only": true,
+          "interface_support_relation": "relevance_only",
+          "packaging_candidate_removed": true,
+          "P3_allowed_expression_exact_port_original": true,
+          "P3_no_USB_A_or_OS_software_inference": true,
+          "manual_lead_and_protocol_narrowing_preserved": true,
+          "requirement_version": 2,
+          "evidence_version": "73f57f0663ca06a47ba85666",
+          "semantic_review_passed": true,
+          "semantic_issues": [],
+          "blocked_checks": 0,
+          "warning_categories": [
+            "价格",
+            "发布标识",
+            "写作依据边界"
+          ],
+          "persistence_checks_passed": 20,
+          "retrieve_HTTP": 504,
+          "retrieve_elapsed_seconds": 120.636,
+          "mutation_retry": false,
+          "final_GET_HTTP": 200,
+          "final_GET_elapsed_seconds": 122.579,
+          "copy_HTTP": 200,
+          "copy_elapsed_seconds": 1.672,
+          "copy_chars": 349,
+          "html_HTTP": 200,
+          "html_elapsed_seconds": 1.151,
+          "html_chars": 7731,
+          "P5_action_attempts_total": 3,
+          "P5_this_release": 1,
+          "new_ima_P2_P3_calls_this_release": 0,
+          "writer_generate_price_image_calls_this_release": 0,
+          "browser_business_UI_verified": false,
+          "evidence": [
+            "output/verification/v2-online-A-final-cache-retrieve-response.json",
+            "output/verification/v2-online-A-final-reopened-task.json",
+            "output/verification/v2-online-A-final-persistence-checks.json",
+            "output/verification/v2-final-independent-inspection.json",
+            "output/verification/v2-final-acceptance-independent-review.json",
+            "output/verification/v2-online-A-final-copy.json",
+            "output/verification/v2-online-A-final-html-response.json"
+          ]
+        }
+      },
+      "cloud_ui": {
+        "status": "business_not_executed_login_page_only",
+        "evidence": [
+          "output/verification/v2-online-browser-attempt.json"
+        ],
+        "limitation": "用户已解锁；Safari真实V2登录页可见但未登录/完成业务，IAB网络变化或超时；不将接口验证计为业务UI完成。",
+        "note": "Safari真实V2登录页可见，但没有登录成功或此业务项目完成的证据；用户已解锁。"
+      }
+    }
+  ],
+  "local_demo_screenshot": {
+    "path": "output/verification/local-saved-draft.png",
+    "scope": "原本地保存稿正文、原图与限定；不证明后续候选理由修复。"
+  },
+  "intermediate_release": {
+    "commit": "d0657aa4d4f05bc76fa1af014efaba69f6d5b4e2",
+    "manifest_sha256": "4a36193a9c800f4baddd9a147ddb70908899cbc8d90462b1734aafb4c7c78d3b",
+    "role": "intermediate_before_L_numeric_patch_not_final_acceptance"
+  },
+  "scope_preservation_evidence": "output/verification/v2-scope-preservation.json",
+  "post_056_corrections": {
+    "status": "implemented_final25f58ad2_cloud_r18_cache_cleanup_and_persistence_verified",
+    "cache_path": {
+      "status": "implemented_with_4_actual_generate_save_reopen_regressions",
+      "extra_external_calls": 0,
+      "real_sample_replay": "output/verification/v2-online-A-actual-generate-cache-replay.json",
+      "real_sample_revision": 4,
+      "real_sample_status": "draft",
+      "original_source_unchanged": true,
+      "original_source_sha256": "38ed6a6f57eb37e39b157907563497429d55f40605c368ce99e1a9d3279a0655",
+      "cloud_cache_path_verified": false,
+      "test_cases": [
+        "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_generate_reuses_and_persists_cleaned_cache_then_reopen_stays_clean",
+        "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_actual_writer_payload_gets_guarded_plan_without_new_understanding_or_matching_calls",
+        "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_platform_change_preserves_cache_and_does_not_ask_budget_or_software",
+        "tests.test_generate_cached_matching.GenerateCachedMatchingTests.test_cached_stop_or_read_cleans_and_persists_without_writing"
+      ],
+      "cloud_retrieve_cache_cleanup_verified": true,
+      "cloud_generate_cache_cleanup_verified": false
+    },
+    "port_claim_mapping": {
+      "status": "implemented_targeted_tests_passed",
+      "test_file_cases": 32,
+      "new_cases": 3,
+      "elapsed_seconds": 0.014,
+      "external_calls": 0,
+      "candidate_evidence_relation": "relevance_only",
+      "unproven_paraphrase_status": "requires_semantic_review",
+      "literal_original_only_supported": true,
+      "new_global_gate": false,
+      "test_cases": [
+        "tests.test_matching_evidence.MatchingEvidenceTests.test_actual_final_A_port_benefit_records_related_source_without_claiming_entailment",
+        "tests.test_matching_evidence.MatchingEvidenceTests.test_port_candidates_do_not_borrow_other_product_or_invalid_original",
+        "tests.test_matching_evidence.MatchingEvidenceTests.test_literal_port_original_has_backend_supported_mapping"
+      ]
+    },
+    "manual_example_narrowing": {
+      "status": "fields_persisted_first_PUT422_then_retrieve200_r15",
+      "lead_before": "开学看课件、写文档、查资料，屏幕纵向空间和常用接口往往比跑分更影响日常。",
+      "lead_after": "如果主要看课件、写文档和查资料，可以先对照屏幕比例、常用接口与实际课程软件需求。",
+      "body_before": "两个USB-A",
+      "body_after": "两个USB3.2 Gen1接口",
+      "writer_calls": 0,
+      "generate_calls": 0,
+      "P5_attempts_budget": 2,
+      "evidence": [
+        "output/verification/v2-online-A-manual-narrowing-record-pre-final-1722917c.json"
+      ],
+      "note": "人工收窄，不能计为模型首次自动输出已正确；不声称全库无USB-A依据。",
+      "P5_attempts_used": 2
+    },
+    "full_regression": {
+      "main_tests": 327,
+      "elapsed_seconds": 4.323,
+      "deployment_tests": 13,
+      "dify_local_structure": "passed",
+      "js_checks": 2,
+      "external_calls": 0
+    }
+  },
+  "pre_cachefix_release_056386": {
+    "status": "archived_real_r11_matching_state_failure",
+    "commit": "056386f17cbde187966de2e33e9b7dc6934cc2ac",
+    "manifest_sha256": "9a1e7be0e88fa694af2ad5328a683c21363770e4d3491e24d99d46916b3dd336",
+    "manifest_files": 26,
+    "all_manifest_files_match": true,
+    "evidence": [
+      "output/verification/v2-056386f1-archive-index.json",
+      "output/verification/v2-final-publish-manifest-pre-cachefix-056386f1.json",
+      "output/verification/v2-remote-source-check-pre-cachefix-056386f1.json",
+      "output/verification/v2-online-A-final-reopened-task-pre-cachefix-056386f1.json"
+    ]
+  },
+  "post_172_numeric_caveat_correction": {
+    "status": "included_in_final338_and_published25f58ad2_r18_numeric_mapping_verified",
+    "new_cases": 3,
+    "test_file_cases": 35,
+    "elapsed_seconds": 0.015,
+    "external_calls": 0,
+    "reproduced_bypasses": [
+      "MateBook A 可作为32GB内存候选",
+      "MateBook A 软件适配待核实且内存32GB",
+      "MateBook A 可作3:2屏幕候选"
+    ],
+    "non_failing_counterexample": "MateBook A 可作候选，内存32GB",
+    "actual_parameter_questions_preserved": true,
+    "candidate_or_software_caveat_cannot_waive_specs": true,
+    "test_cases": [
+      "tests.test_matching_evidence.MatchingEvidenceTests.test_candidate_caveat_does_not_waive_same_product_numeric_identity",
+      "tests.test_matching_evidence.MatchingEvidenceTests.test_software_unknown_cannot_waive_asserted_product_specification",
+      "tests.test_matching_evidence.MatchingEvidenceTests.test_genuine_parameter_questions_and_unknown_values_are_not_asserted_specs"
+    ]
+  },
+  "historical_327_freeze": {
+    "main_tests": 327,
+    "elapsed_seconds": 4.323,
+    "released_commit": "1722917ce6dc639ab7079682b9f37d777296c718",
+    "note": "历史记录；通用final-tests.log现为338，不把覆盖后的日志当327原始日志。"
+  },
+  "unreleased_338_freeze": {
+    "status": "historical_unreleased_freeze_now_deployed_and_real_r18_verified",
+    "main_tests": 338,
+    "main_elapsed_seconds": 2.906,
+    "deployment_tests": 13,
+    "JS_checks": 2,
+    "Dify_local_structure": "passed",
+    "added_since327": {
+      "numeric_nonassertion": 3,
+      "accessory_source_scope": 1,
+      "interface_shape": 7,
+      "total": 11
+    },
+    "validation_targeted_tests": 36,
+    "new_account_username": "pcadmin",
+    "secret_configuration": "private publish-process injection; no password, authentication hash, or Token in acceptance records",
+    "account_login_verified": true,
+    "latest_cloud_retrieve_verified": true
+  },
+  "final_pending_run": {
+    "status": "completed_final_r18_read_only_recovery_and_delivery_verified",
+    "writer_calls_planned": 0,
+    "fresh_ima_P2_P3_queries_planned": 0,
+    "next_P5_cumulative_number": 3,
+    "new_account_username": "pcadmin",
+    "credentials_in_records": false,
+    "note": "338冻结源码发布后只执行一次缓存retrieve，再GET/copy/HTML；不能把172两次P5历史改写。",
+    "source_revision": "25f58ad2a5d70ccbf15d42cc1c82bbf19c0f83ed",
+    "new_account_fresh_login_verified": true,
+    "evidence": [
+      "output/verification/v2-online-A-final-cache-retrieve-attempt.json",
+      "output/verification/v2-online-A-final-persistence-list.json",
+      "output/verification/v2-online-A-final-cache-retrieve-response.json",
+      "output/verification/v2-online-A-final-reopened-task.json",
+      "output/verification/v2-online-A-final-persistence-checks.json",
+      "output/verification/v2-online-A-final-copy.json",
+      "output/verification/v2-online-A-final-html-response.json"
+    ],
+    "retrieve_response_HTTP": 504,
+    "retrieve_response_elapsed_seconds": 120.636,
+    "mutation_retry": false,
+    "actual_final_persistence_confirmed": true,
+    "final_task_revision": 18,
+    "final_GET_HTTP": 200,
+    "final_GET_elapsed_seconds": 122.579,
+    "copy_HTTP": 200,
+    "copy_elapsed_seconds": 1.672,
+    "html_HTTP": 200,
+    "html_elapsed_seconds": 1.151,
+    "html_chars": 7731,
+    "additional_mutations_after_P5": 0,
+    "additional_model_calls_after_P5": 0
+  },
+  "local_original_preservation": {
+    "status": "two_tool_changes_attributed_to_another_existing_chat",
+    "checked_files": 771,
+    "preserved": false,
+    "changed_original_files": [
+      "scripts/publish_app.py",
+      "tests/test_publish_app.py"
+    ],
+    "attribution": "exact_write_log_other_chat_publisher_auth_guard_09_59_to10_02",
+    "files_overwritten_or_restored_by_this_followup": false,
+    "evidence": [
+      "output/verification/v1-local-preservation.json",
+      "output/verification/v1-concurrent-tool-changes.json"
+    ],
+    "note": "Earlier unchanged observations apply only to their check time, not current whole-directory preservation.",
+    "unchanged_manifest_files": 769,
+    "checked_application_files": 25,
+    "application_files_unchanged": true,
+    "changed_application_files": []
+  },
+  "v1_remote_preservation_latest": {
+    "status": "five_fields_unchanged_runtime_created_at_changed",
+    "recorded_at": "2026-10-20T10:28:46.331689+08:00",
+    "unchanged_fields": [
+      "commit",
+      "status",
+      "last_modified",
+      "hardware",
+      "host"
+    ],
+    "commit": "2248ff7c7553cf9bc52677c4c380014207ade741",
+    "runtime_created_at": "2026-10-20T02:05:42Z",
+    "runtime_change_attribution": "direct_other_existing_chat_V1_password_reset_deployment_workflow",
+    "V2_group_V1_write_requests": 0,
+    "evidence": [
+      "output/verification/v1-post-v2-preservation.json",
+      "output/verification/v1-concurrent-tool-changes.json"
+    ],
+    "runtime_attribution_limit": "No exact cloud deployment request ID; direct workflow state and fixed V1 target establish before/after linkage."
+  },
+  "pre_final_release_1722917": {
+    "status": "archived_r15_cache_cleaned_USB_shape_and_package_failure",
+    "commit": "1722917ce6dc639ab7079682b9f37d777296c718",
+    "manifest_sha256": "276ff3cd8786e49a0273b117185d70bab61adfcdefee3c4e9e53a377840e3622",
+    "manifest_files": 26,
+    "all_manifest_files_match": true,
+    "evidence": [
+      "output/verification/v2-final-publish-manifest-pre-final-1722917c.json",
+      "output/verification/v2-remote-source-check-pre-final-1722917c.json",
+      "output/verification/v2-online-A-final-reopened-task-pre-final-1722917c.json"
+    ]
+  },
+  "final_limits": [
+    {
+      "id": "cloud_business_UI_not_verified",
+      "evidence": "output/verification/v2-online-browser-attempt.json"
+    },
+    {
+      "id": "retrieve_504_but_r18_persisted",
+      "retrieve_HTTP": 504,
+      "GET_HTTP": 200,
+      "evidence": "output/verification/v2-online-A-final-persistence-checks.json"
+    },
+    {
+      "id": "five_ima_image_directories403",
+      "evidence": "output/verification/live-ima-discovery.json"
+    }
+  ]
+}

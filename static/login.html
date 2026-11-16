@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="noindex,nofollow">
+  <title>登录 · 华为 PC 内容工作台</title>
+  <link rel="stylesheet" href="/static/login.css">
+  <script src="/static/login.js" defer></script>
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="brand-mark" aria-hidden="true">H<span>·</span></div>
+      <p class="eyebrow">PC CONTENT STUDIO</p>
+      <h1 id="login-title">登录内容工作台</h1>
+      <p class="intro">使用部署者提供的账号，开始有依据的图文创作。</p>
+      <form id="login-form" action="/api/login" method="post">
+        <label for="username">账号</label>
+        <input id="username" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="128" required autofocus>
+        <label for="password">密码</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" maxlength="1024" required>
+        <p id="login-error" class="error" role="alert" hidden></p>
+        <button id="login-submit" type="submit">登录工作台</button>
+        <p id="login-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="workspace-note" role="note">
+        <span class="note-symbol" aria-hidden="true">i</span>
+        <p><strong>共享工作空间</strong>授权操作者共享任务、素材和导出文件。请妥善保管账号，并在使用后退出登录。</p>
+      </div>
+      <noscript><p class="error">请启用浏览器 JavaScript 后登录。</p></noscript>
+    </section>
+    <p class="page-note">产品事实与原图来自指定 ima 知识库。</p>
+  </main>
+</body>
+</html>

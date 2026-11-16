@@ -1,0 +1,16 @@
+{
+  "name": "华为 PC 图文工作台",
+  "updated_at": "2026-10-19",
+  "links": {
+    "github": null,
+    "modelscope": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+    "manual": "docs/manual.pdf",
+    "application": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+    "showcase": "https://modelscope.cn/studios/A1211JOY/huawei-pc-content-studio"
+  },
+  "review": {
+    "mode": "只读成果展示",
+    "live_generation": false,
+    "application": "完整应用已发布，需工作台账号登录；云端接口及重启恢复已验，用户实际网页登录确认通过"
+  }
+}

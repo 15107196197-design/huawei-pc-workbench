@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+data/
+output/
+.DS_Store
+*.log
+
+# 验收日志作为可核查证据随仓库发布（仅限该目录）
+!docs/verification/*.log

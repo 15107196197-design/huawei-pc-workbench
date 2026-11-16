@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: 华为PC Agent 受控工具
+  version: 1.0.0
+  description: 产品事实从ima检索；报价使用独立规则引擎。导入前替换servers地址，使用X-Tool-Token自定义请求头认证。
+servers:
+- url: https://replace-with-your-api.example.invalid
+security:
+- toolToken: []
+paths:
+  /api/dify/execute:
+    post:
+      operationId: executeHuaweiContentTask
+      summary: 执行受控任务流水线
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteRequest'
+      responses:
+        '200':
+          description: 结构化业务结果；仍须检查业务status和核验项
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: 工具凭证无效
+        '403':
+          description: 任务上下文或用户权限不匹配
+        '422':
+          description: 输入参数不符合合同
+  /api/tools/search:
+    post:
+      operationId: searchImaProductFacts
+      summary: 检索指定ima知识库产品事实与图片
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: 结构化业务结果；仍须检查业务status和核验项
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: 工具凭证无效
+        '403':
+          description: 任务上下文或用户权限不匹配
+        '422':
+          description: 输入参数不符合合同
+  /api/tools/quotes:
+    post:
+      operationId: calculateVerifiedOffers
+      summary: 按证据和资格计算报价，禁止LLM算价
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuotesRequest'
+      responses:
+        '200':
+          description: 结构化业务结果；仍须检查业务status和核验项
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: 工具凭证无效
+        '403':
+          description: 任务上下文或用户权限不匹配
+        '422':
+          description: 输入参数不符合合同
+  /api/tools/verify:
+    post:
+      operationId: verifyHuaweiDraft
+      summary: 核验事实、型号、平台格式与营销表达
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRequest'
+      responses:
+        '200':
+          description: 结构化业务结果；仍须检查业务status和核验项
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: 工具凭证无效
+        '403':
+          description: 任务上下文或用户权限不匹配
+        '422':
+          description: 输入参数不符合合同
+components:
+  securitySchemes:
+    toolToken:
+      type: apiKey
+      in: header
+      name: X-Tool-Token
+  schemas:
+    ExecuteRequest:
+      type: object
+      required:
+      - action
+      - user
+      properties:
+        action:
+          type: string
+          enum:
+          - chat
+          - generate
+          - retrieve
+          - verify
+        user:
+          type: string
+        task_id:
+          type: string
+        context_token:
+          type: string
+          description: 服务器HMAC_SHA256签名，与user和task_id绑定
+        message:
+          type: string
+        instruction:
+          type: string
+        brief:
+          type: object
+          additionalProperties: true
+        platform:
+          type: string
+          enum:
+          - wechat
+          - xiaohongshu
+          - moments
+          - poster
+    SearchRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+        model:
+          type: string
+    QuotesRequest:
+      type: object
+      required:
+      - offers
+      - buyer
+      - region
+      properties:
+        offers:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: 带真实来源和时间的报价对象；完整字段见docs/pricing.md。不得由LLM补造verified、金额和优惠规则。
+        buyer:
+          type: object
+          additionalProperties: true
+          description: kind personal/business；身份资格以true/false/未知区分
+        region:
+          type: string
+          default: 杭州
+        now:
+          type: string
+          format: date-time
+        max_age_hours:
+          type: number
+          minimum: 0
+    VerifyRequest:
+      type: object
+      required:
+      - draft
+      - facts
+      - assets
+      - quotes
+      - platform
+      properties:
+        draft:
+          type: object
+          additionalProperties: true
+        facts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        assets:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        quotes:
+          type: object
+          additionalProperties: true
+        platform:
+          type: string
+          enum:
+          - wechat
+          - xiaohongshu
+          - moments
+          - poster

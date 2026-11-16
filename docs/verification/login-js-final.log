@@ -1,0 +1,1 @@
+PASS: four login flows; fixed endpoints, CORS mode, same-origin credentials, session confirmation and retry boundaries.

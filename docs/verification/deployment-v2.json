@@ -1,0 +1,59 @@
+{
+  "recorded_at": "2026-10-20T03:54:53.013326+08:00",
+  "target_slug": "huawei-pc-agent-app-v2",
+  "first_version_modified": false,
+  "offline_checks": [
+    {
+      "command": ".venv/bin/python -m unittest tests.test_publish_app -q",
+      "tests": 38,
+      "result": "passed",
+      "transport": "synthetic credentials and mocked network"
+    },
+    {
+      "command": ".venv/bin/python deploy/modelscope/test_runtime.py -q",
+      "tests": 13,
+      "result": "passed",
+      "transport": "isolated local filesystem and startup tests"
+    }
+  ],
+  "real_external_checks": [
+    {
+      "kind": "anonymous ModelScope metadata GET",
+      "target": "A1211JOY/huawei-pc-agent-app",
+      "status": "Running",
+      "sdk_type": "docker",
+      "hardware": "platform/2v-cpu-8g-mem",
+      "visibility": "public"
+    },
+    {
+      "kind": "read-only Safari account overview",
+      "account": "A1211JOY",
+      "result": "logged in"
+    },
+    {
+      "kind": "credential presence only",
+      "modelscope_disk_token": "not found in checked default locations",
+      "modelscope_environment_token": "absent",
+      "provider_config": "present in original private local settings",
+      "ima_credentials": "existing files present"
+    }
+  ],
+  "not_executed": [
+    "V2 create_repo",
+    "V2 Secret writes",
+    "V2 upload",
+    "V2 deploy",
+    "V2 online login",
+    "real model or ima business calls",
+    "local Docker image build"
+  ],
+  "ui_checks_pending": [
+    "existing token copy control",
+    "Docker creation form and available free hardware"
+  ],
+  "notes": [
+    "CUA Safari actions were interrupted by user-window changes; no Cookie or Token value read or output.",
+    "Identity verification does not prove create permission; actual V2 creation response must be checked.",
+    "Development SDK installation did not change pyproject.toml or requirements.lock."
+  ]
+}

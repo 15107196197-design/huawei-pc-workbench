@@ -1,0 +1,513 @@
+version: 0.6.0
+kind: app
+dependencies: []
+app:
+  name: 华为PC图文工作台 · 对话入口
+  description: 多轮场景理解与受控图文生成入口。执行、证据与规则计算由自研后端负责；需配置公共HTTPS服务和工具凭证。
+  icon: 💻
+  icon_type: emoji
+  icon_background: '#EAF1FF'
+  mode: advanced-chat
+  use_icon_as_answer_icon: false
+workflow:
+  conversation_variables:
+  - id: e23cb11f-76de-4c7c-8855-be08a684775d
+    name: task_id
+    description: 后端任务标识；与Dify conversation_id不同
+    value_type: string
+    value: ''
+    selector:
+    - conversation
+    - task_id
+  - id: 3cd81212-e366-4806-9194-71f996d73d45
+    name: context_token
+    description: 服务器生成的任务签名，不得由LLM生成
+    value_type: string
+    value: ''
+    selector:
+    - conversation
+    - context_token
+  - id: f8d98dc2-6129-4a2d-a81c-42e9cf34e9aa
+    name: request_user
+    description: 后端代理传入的业务用户；预览使用独立命名空间
+    value_type: string
+    value: ''
+    selector:
+    - conversation
+    - request_user
+  environment_variables:
+  - id: d3d3609d-32b6-4413-98f6-e6037ae5fef3
+    name: PUBLIC_API_BASE
+    value_type: string
+    value: https://replace-with-your-api.example.invalid
+    description: 自研后端公共HTTPS地址，不带末尾斜线
+  - id: 03e46106-fcae-4c90-9104-b574b7768444
+    name: TOOL_TOKEN
+    value_type: secret
+    value: ''
+    description: 与自研后端TOOL_TOKEN一致；导出时排除真实值
+  rag_pipeline_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: 描述这次内容面向谁、解决什么问题、准备发在哪里。信息不足时我会继续确认；资料与报价未核实前不会承诺。
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    nodes:
+    - id: start
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: start
+        title: 任务输入
+        variables:
+        - variable: task_id
+          label: 后端任务ID（服务器代理填写）
+          type: text-input
+          required: false
+          options: []
+          default: ''
+          max_length: 256
+          hint: ''
+          placeholder: ''
+        - variable: user
+          label: 业务用户（服务器代理填写）
+          type: text-input
+          required: false
+          options: []
+          default: ''
+          max_length: 256
+          hint: ''
+          placeholder: ''
+        - variable: context_token
+          label: 任务签名（服务器代理填写）
+          type: text-input
+          required: false
+          options: []
+          default: ''
+          max_length: 256
+          hint: ''
+          placeholder: ''
+        - variable: action
+          label: 执行动作
+          type: select
+          required: false
+          options:
+          - chat
+          - generate
+          - retrieve
+          - verify
+          default: chat
+          max_length: 256
+          hint: ''
+          placeholder: ''
+        - variable: platform
+          label: 平台覆盖值
+          type: select
+          required: false
+          options:
+          - wechat
+          - xiaohongshu
+          - moments
+          - poster
+          default: ''
+          max_length: 256
+          hint: ''
+          placeholder: ''
+      position:
+        x: 30
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: payload
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: code
+        title: 安全编码请求
+        code_language: python3
+        code: |
+          import json
+
+          def main(query: str, task_id: str, user: str, context_token: str,
+                   conversation_task_id: str, conversation_context_token: str,
+                   conversation_user: str, action: str, platform: str, sys_user_id: str) -> dict:
+              task_id = (task_id or conversation_task_id or "").strip()
+              context_token = (context_token or conversation_context_token or "").strip()
+              user = (user or conversation_user or "").strip()
+              if not task_id:
+                  user = "preview:" + str(sys_user_id)
+                  context_token = ""
+              elif not user:
+                  user = "preview:" + str(sys_user_id)
+              action = action or "chat"
+              if action not in ["chat", "generate", "retrieve", "verify"]:
+                  raise ValueError("不支持的任务动作")
+              payload = {"action": action, "user": user, "message": query or "",
+                         "instruction": query or "", "context_token": context_token}
+              if task_id:
+                  payload["task_id"] = task_id
+              if platform:
+                  payload["platform"] = platform
+              return {"payload": json.dumps(payload, ensure_ascii=False),
+                      "request_user": user, "context_token": context_token}
+        variables:
+        - variable: query
+          value_selector:
+          - sys
+          - query
+        - variable: task_id
+          value_selector:
+          - start
+          - task_id
+        - variable: user
+          value_selector:
+          - start
+          - user
+        - variable: context_token
+          value_selector:
+          - start
+          - context_token
+        - variable: conversation_task_id
+          value_selector:
+          - conversation
+          - task_id
+        - variable: conversation_context_token
+          value_selector:
+          - conversation
+          - context_token
+        - variable: conversation_user
+          value_selector:
+          - conversation
+          - request_user
+        - variable: action
+          value_selector:
+          - start
+          - action
+        - variable: platform
+          value_selector:
+          - start
+          - platform
+        - variable: sys_user_id
+          value_selector:
+          - sys
+          - user_id
+        outputs:
+          payload:
+            type: string
+            children: null
+          request_user:
+            type: string
+            children: null
+          context_token:
+            type: string
+            children: null
+      position:
+        x: 335
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: execute
+      type: custom
+      data:
+        desc: 外部调用；TOOL_TOKEN仅以Secret环境变量引用，不作为用户输入。
+        selected: false
+        type: http-request
+        title: 调用受控任务服务
+        method: post
+        url: '{{#env.PUBLIC_API_BASE#}}/api/dify/execute'
+        authorization:
+          type: no-auth
+          config: null
+        headers: |-
+          Content-Type: application/json
+          X-Tool-Token: {{#env.TOOL_TOKEN#}}
+        params: ''
+        variables: []
+        body:
+          type: raw-text
+          data:
+          - id: request-json
+            key: ''
+            type: text
+            value: '{{#payload.payload#}}'
+        ssl_verify: true
+        timeout:
+          connect: 10
+          read: 300
+          write: 30
+        retry_config:
+          retry_enabled: false
+          max_retries: 0
+          retry_interval: 1000
+        error_strategy: fail-branch
+      position:
+        x: 640
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: parsed
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: code
+        title: 解析结果与交付状态
+        code_language: python3
+        code: |
+          import json
+
+          def main(body: str, status_code: int, previous_task_id: str,
+                   request_user: str, context_token: str) -> dict:
+              fallback = {"reply": "任务接口未返回可用结果，请查看连接状态或重新执行。",
+                          "task_id": previous_task_id or "", "status": "error",
+                          "result_json": "{}", "request_user": request_user,
+                          "context_token": context_token}
+              if not 200 <= int(status_code) < 300:
+                  fallback["reply"] = "任务接口返回 HTTP " + str(status_code) + "，未生成或确认成品。"
+                  return fallback
+              try:
+                  data = json.loads(body)
+              except (ValueError, TypeError):
+                  return fallback
+              if not isinstance(data, dict) or not isinstance(data.get("result"), dict):
+                  return fallback
+              task = data["result"]
+              task_id = str(data.get("task_id") or task.get("id") or previous_task_id or "")
+              if not task_id:
+                  return fallback
+              # Keep large evidence bodies and chat history out of the code-node output.
+              # The business UI reads the complete saved task through its own backend.
+              summary = {k: task[k] for k in ["id", "status", "brief", "draft", "checks", "quotes"] if k in task}
+              encoded = json.dumps(summary, ensure_ascii=False)
+              if len(encoded) > 60000:
+                  encoded = json.dumps({"id": task_id, "status": task.get("status"),
+                                        "truncated": True, "detail": "请在业务界面查看完整任务"}, ensure_ascii=False)
+              return {"reply": str(data.get("reply") or "任务已更新，请在业务界面查看内容和核验结果。")[:20000],
+                      "task_id": task_id, "status": str(data.get("status") or task.get("status") or "unknown"),
+                      "result_json": encoded, "request_user": str(data.get("user") or request_user),
+                      "context_token": str(data.get("context_token") or context_token)}
+        variables:
+        - variable: body
+          value_selector:
+          - execute
+          - body
+        - variable: status_code
+          value_selector:
+          - execute
+          - status_code
+        - variable: previous_task_id
+          value_selector:
+          - conversation
+          - task_id
+        - variable: request_user
+          value_selector:
+          - payload
+          - request_user
+        - variable: context_token
+          value_selector:
+          - payload
+          - context_token
+        outputs:
+          reply:
+            type: string
+            children: null
+          task_id:
+            type: string
+            children: null
+          status:
+            type: string
+            children: null
+          result_json:
+            type: string
+            children: null
+          request_user:
+            type: string
+            children: null
+          context_token:
+            type: string
+            children: null
+      position:
+        x: 945
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: remember
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: assigner
+        version: '2'
+        title: 保留本次任务上下文
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - parsed
+          - task_id
+          variable_selector:
+          - conversation
+          - task_id
+          write_mode: over-write
+        - input_type: variable
+          operation: over-write
+          value:
+          - parsed
+          - context_token
+          variable_selector:
+          - conversation
+          - context_token
+          write_mode: over-write
+        - input_type: variable
+          operation: over-write
+          value:
+          - parsed
+          - request_user
+          variable_selector:
+          - conversation
+          - request_user
+          write_mode: over-write
+      position:
+        x: 1250
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: answer
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: answer
+        title: 回复与追问
+        answer: '{{#parsed.reply#}}'
+        variables: []
+      position:
+        x: 1555
+        y: 250
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    - id: failure
+      type: custom
+      data:
+        desc: ''
+        selected: false
+        type: answer
+        title: 连接失败
+        variables: []
+        answer: 任务服务连接失败，本次未确认生成结果。请检查公共HTTPS地址、TOOL_TOKEN与服务运行状态；原任务可在业务界面重新打开。
+      position:
+        x: 1860
+        y: 500
+      sourcePosition: right
+      targetPosition: left
+      width: 260
+      height: 100
+      selected: false
+    edges:
+    - id: start-source-payload
+      type: custom
+      source: start
+      target: payload
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: start
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+    - id: payload-source-execute
+      type: custom
+      source: payload
+      target: execute
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: code
+        targetType: http-request
+        isInIteration: false
+        isInLoop: false
+    - id: execute-source-parsed
+      type: custom
+      source: execute
+      target: parsed
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: http-request
+        targetType: code
+        isInIteration: false
+        isInLoop: false
+    - id: execute-fail-branch-failure
+      type: custom
+      source: execute
+      target: failure
+      sourceHandle: fail-branch
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: http-request
+        targetType: answer
+        isInIteration: false
+        isInLoop: false
+    - id: parsed-source-remember
+      type: custom
+      source: parsed
+      target: remember
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: code
+        targetType: assigner
+        isInIteration: false
+        isInLoop: false
+    - id: remember-source-answer
+      type: custom
+      source: remember
+      target: answer
+      sourceHandle: source
+      targetHandle: target
+      zIndex: 0
+      data:
+        sourceType: assigner
+        targetType: answer
+        isInIteration: false
+        isInLoop: false
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.65

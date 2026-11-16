@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "name": "华为 PC 图文工作台",
+  "version": "0.1.0",
+  "updated_at": "2026-10-19",
+  "summary": "面向华为 PC 导购和内容运营的图文 Agent 工作台：使用指定 ima 产品事实与原图，结合多轮需求澄清、平台策略、DeepSeek 创作、独立报价规则和 Qwen 背景合成及辅助核验，生成可编辑、可追溯、可导出的内容。",
+  "links": {
+    "github": null,
+    "modelscope": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+    "manual": "docs/作品说明书.md",
+    "readme": "README.md",
+    "application": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+    "showcase": "https://modelscope.cn/studios/A1211JOY/huawei-pc-content-studio",
+    "cloud_acceptance": "docs/cloud-acceptance.json"
+  },
+  "status": {
+    "local_mvp": "verified",
+    "external_model_calls": "verified",
+    "dify_delivery_files": "locally_validated",
+    "dify_cloud_import": "pending",
+    "dify_public_callback": "pending",
+    "public_backend_deployment": "verified",
+    "docker_build": "verified_on_modelscope",
+    "all_channel_checkout_price": "not_implemented",
+    "hangzhou_lowest_price": "not_confirmed",
+    "modelscope_public_page": "verified",
+    "github_public_repository": "pending",
+    "cloud_persistence": "verified_after_redeployment",
+    "cloud_api_workflow": "verified",
+    "cloud_browser_login": "user_confirmed"
+  },
+  "features": [
+    "自然语言多轮需求澄清与可编辑需求卡",
+    "八类场景与四平台差异化内容策略",
+    "指定 ima 共享库的产品事实与原图检索及来源留痕",
+    "DeepSeek 文本生成和辅助语义核验",
+    "DeepSeek Search 价格线索发现，不自动确认为报价",
+    "独立 Decimal 报价引擎，按输入证据处理优惠、资格与商品条件",
+    "Qwen-Image 仅生成背景，ima 产品原图固定图层合成",
+    "Qwen 视觉辅助核验与程序渲染一致性检查",
+    "人工改稿、配图管理、保存取消与历史版本恢复",
+    "统一四部分报告及 TXT、HTML、JSON、ZIP、PNG、PDF 导出"
+  ],
+  "scenarios": [
+    "开学季",
+    "职场办公",
+    "内容创作",
+    "家庭换新",
+    "企业采购",
+    "门店到访",
+    "新品首发",
+    "节日营销"
+  ],
+  "platforms": [
+    "公众号",
+    "小红书",
+    "门店朋友圈",
+    "门店海报"
+  ],
+  "target_channels": [
+    "华为商城",
+    "淘宝",
+    "闲鱼",
+    "小红书",
+    "微信小程序",
+    "京东华为自营",
+    "线下门店"
+  ],
+  "verified_results": [
+    {
+      "name": "公众号真实生成案例",
+      "product": "HUAWEI MateBook 14（鸿蒙版）",
+      "audience": "大学新生",
+      "scene": "开学季",
+      "title": "大学新生选笔记本：先看学习任务与携带需求",
+      "fact_count": 4,
+      "image_count": 3,
+      "evidence": [
+        "review-site/assets/article-txt.txt",
+        "review-site/assets/article-json.json",
+        "review-site/assets/article-zip.zip"
+      ],
+      "limits": [
+        "预算为用户自述预算，不是产品售价",
+        "价格与发布标识待确认",
+        "软件适配未确认为事实"
+      ]
+    },
+    {
+      "name": "门店海报真实背景与合成",
+      "product": "HUAWEI MateBook 14（鸿蒙版）",
+      "title": "开学选本，先看课程与软件",
+      "image_model": "qwen-image-2.1-pro",
+      "vision_model": "qwen3-vl-plus",
+      "product_subject": "ima 原图独立按比例合成",
+      "vision_result": {
+        "passed": true,
+        "issues": []
+      },
+      "evidence": [
+        "review-site/assets/poster.png",
+        "review-site/assets/poster.pdf",
+        "review-site/assets/poster.json",
+        "review-site/assets/poster-audit.txt"
+      ],
+      "limits": [
+        "海报保留发布前复核与 AI 背景标识",
+        "PDF 为单页位图",
+        "视觉通过不构成官方设计认证"
+      ]
+    },
+    {
+      "name": "DeepSeek 原生 Search",
+      "result_count": 12,
+      "result_type": "unverified_price_discovery",
+      "evidence": [
+        "docs/acceptance.md"
+      ],
+      "limits": [
+        "网页线索不等于可下单报价",
+        "未确认杭州最低到手价"
+      ]
+    },
+    {
+      "name": "本地程序与交付校验",
+      "unit_integration_tests_passed": 192,
+      "scenario_platform_rule_combinations_passed": 32,
+      "dify_dsl_count": 4,
+      "evidence": [
+        "docs/acceptance.md",
+        "dify/validate_delivery.py",
+        "tests/"
+      ],
+      "limits": [
+        "自动化测试的外部接口使用隔离模拟",
+        "32 组合验证不等于 32 篇模型原创成稿效果评审",
+        "Dify 本地校验不证明云端导入与回调成功"
+      ],
+      "deployment_runtime_tests_passed": 13,
+      "frontend_flow_branches_passed": 4
+    },
+    {
+      "name": "魔搭完整应用实测",
+      "scope": "云端接口全流程与重启恢复；浏览器登录由用户实际确认",
+      "evidence": [
+        "docs/cloud-acceptance.json",
+        "docs/acceptance.md"
+      ],
+      "limits": [
+        "未将本地界面截图冒充云端截图",
+        "Dify Cloud导入与回调尚未联调",
+        "未确认杭州最低到手价"
+      ]
+    }
+  ],
+  "known_limits": [
+    "单操作人 MVP，未实现多人租户与多实例生产架构",
+    "Dify Cloud 真实导入与公网工具回调尚待验证",
+    "产品与软件适配覆盖受指定 ima 档案及权限限制",
+    "七渠道全自动结算价采集未完成，当前没有确认的最低到手价",
+    "营销与视觉检查为辅助核验，不构成法律、平台或品牌官方认证",
+    "不自动发布到社交平台或商家账号",
+    "模型、搜索和云资源调用需部署者自己的授权与账户费用"
+  ],
+  "review_access": {
+    "mode": "authenticated_application_and_public_showcase",
+    "live_generation_public": false,
+    "application_url": "https://a1211joy-huawei-pc-agent-app.ms.show",
+    "application_entry": "https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app",
+    "application_functional_acceptance": "cloud_api_and_persistence_verified_browser_login_user_confirmed",
+    "showcase_url": "https://a1211joy-huawei-pc-content-studio.ms.show",
+    "showcase_access_verified": true,
+    "note": "完整应用已发布，接口全流程与真实重启恢复通过，用户实际网页登录确认成功。需工作台账号登录；GitHub仓库仍待授权。",
+    "live_generation_authenticated": true,
+    "last_access_checked_at": "2026-10-20T00:04:54.074848+08:00"
+  },
+  "secret_policy": "公开源码、说明书、展示页及成果文件不得包含 API Key、Client ID、工具 Token、登录凭证、私有运行数据库或临时授权 URL。"
+}
