@@ -12,6 +12,10 @@
 - **源码仓库**：<https://github.com/15107196197-design/huawei-pc-workbench>（`v2.0` 标签对应本次发布修订）。
 - **Dify 画布版（同项目另一条路线）**：<https://github.com/15107196197-design/huawei-pc-dify-flow> —— 112 节点画布快照 + 5 份可直接导入 Dify 的 DSL，以及配置手册 `docs/HOW-TO-CONFIGURE.md`。
 - **验收证据**：[docs/verification/](docs/verification/README.md) 收录测试演进日志（195→338 项）、发布清单、独立验收审查与前端流程回归；完整 309 个过程快照不随仓库发布。
+## 想直接试用（不必本机部署）
+
+在 [魔搭第二版空间](https://modelscope.cn/studios/A1211JOY/huawei-pc-agent-app-v2) 页面点右上角「复制」，把空间复制到你自己的账号。副本默认**无需登录**，打开应用后在「连接与设置」里填**你自己的** DeepSeek / 百炼 Key（额度走你的账号）。复制完成后先确认设置里没有预填任何 Key；万一看到预填 Key，请勿使用并提醒作者轮换。要把副本公开给他人时，再配置 `STUDIO_USERNAME` / `STUDIO_PASSWORD_HASH`（见 `.env.example` 与[部署说明](docs/full-app-deployment.md)）。
+
 - **本机运行**：`cp .env.example .env` 后填入自己的 Key，`docker compose up` 或按[部署说明](docs/full-app-deployment.md)启动。`data/` 与 `output/` 是运行时产物，已在 `.gitignore` 中排除。
 - **设置登录账号（必做）**：启动后运行 `python3 scripts/configure_access.py` 配置登录名与密码（≥12 位，只存加盐哈希）。不配置的话登录页无法进入——这是单操作人工作台，没有注册入口。
 - **前端零构建**：不需要 Node.js，页面直接由后端渲染；仅表单行为回归需要 `node tests/*.mjs`。
