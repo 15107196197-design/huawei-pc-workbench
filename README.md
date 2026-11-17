@@ -13,6 +13,7 @@
 - **Dify 画布版（同项目另一条路线）**：<https://github.com/15107196197-design/huawei-pc-dify-flow> —— 112 节点画布快照 + 5 份可直接导入 Dify 的 DSL，以及配置手册 `docs/HOW-TO-CONFIGURE.md`。
 - **验收证据**：[docs/verification/](docs/verification/README.md) 收录测试演进日志（195→338 项）、发布清单、独立验收审查与前端流程回归；完整 309 个过程快照不随仓库发布。
 - **本机运行**：`cp .env.example .env` 后填入自己的 Key，`docker compose up` 或按[部署说明](docs/full-app-deployment.md)启动。`data/` 与 `output/` 是运行时产物，已在 `.gitignore` 中排除。
+- **设置登录账号（必做）**：启动后运行 `python3 scripts/configure_access.py` 配置登录名与密码（≥12 位，只存加盐哈希）。不配置的话登录页无法进入——这是单操作人工作台，没有注册入口。
 - **前端零构建**：不需要 Node.js，页面直接由后端渲染；仅表单行为回归需要 `node tests/*.mjs`。
 
 # 华为 PC 图文工作台
